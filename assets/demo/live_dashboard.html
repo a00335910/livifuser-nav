@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en" data-palette="#3987e5,#d95926">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LiViFuser-Nav — live policy overlay</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --surface-2: #232321;
+    --hairline: #33332f;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #8a8a80;
+    --operator: #3987e5;
+    --policy: #d95926;
+    --good: #0ca30c;
+    --warning: #fab219;
+    --critical: #d03b3b;
+    --scan: #6f6f66;
+    --fov: #4a4a44;
+    font-synthesis: none;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--surface-0);
+    color: var(--text-primary);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    padding: 12px 20px; border-bottom: 1px solid var(--hairline);
+    background: var(--surface-1);
+  }
+  h1 { font-size: 15px; font-weight: 650; margin: 0; letter-spacing: -0.01em; }
+  h1 span { color: var(--text-muted); font-weight: 450; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; align-items: center; }
+  .chip {
+    font-size: 11.5px; padding: 3px 9px; border-radius: 999px;
+    background: var(--surface-2); color: var(--text-secondary);
+    border: 1px solid var(--hairline); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .chip b { color: var(--text-primary); font-weight: 600; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11.5px; padding: 3px 10px; border-radius: 999px;
+    border: 1px solid currentColor; font-weight: 600;
+  }
+  .pill.good { color: var(--good); }
+  .pill.warning { color: var(--warning); }
+  .pill.critical { color: var(--critical); }
+  main {
+    flex: 1; min-height: 0; display: grid; gap: 14px; padding: 14px 20px 8px;
+    grid-template-columns: minmax(420px, 1.15fr) minmax(380px, 0.85fr);
+  }
+  @media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--surface-1); border: 1px solid var(--hairline);
+    border-radius: 10px; padding: 12px 14px; min-height: 0;
+    display: flex; flex-direction: column;
+  }
+  .panel > h2 {
+    font-size: 12px; font-weight: 600; margin: 0 0 2px; letter-spacing: 0.02em;
+    text-transform: uppercase; color: var(--text-secondary);
+  }
+  .panel > p.sub { margin: 0 0 10px; font-size: 11.5px; color: var(--text-muted); }
+  .right { display: grid; gap: 14px; grid-template-rows: auto 1fr 1fr auto; min-height: 0; }
+  canvas { display: block; width: 100%; flex: 1; min-height: 0; border-radius: 6px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+  .legend .key { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-secondary); }
+  .swatch { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+  .swatch.dot { width: 8px; height: 8px; border-radius: 50%; }
+  .swatch.band { height: 10px; width: 14px; border-radius: 2px; opacity: 0.34; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .tile {
+    background: var(--surface-2); border: 1px solid var(--hairline);
+    border-radius: 8px; padding: 9px 11px;
+  }
+  .tile .label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+  .tile .value { font-size: 21px; font-weight: 620; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; margin-top: 1px; }
+  .tile .unit { font-size: 11px; color: var(--text-muted); font-weight: 450; margin-left: 3px; }
+  .controls { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .control { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 140px; }
+  .control label { font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; }
+  .control label b { color: var(--text-primary); font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type=range] { width: 100%; accent-color: var(--policy); }
+  button {
+    background: var(--surface-2); color: var(--text-primary); font: inherit; font-size: 12px;
+    border: 1px solid var(--hairline); border-radius: 7px; padding: 6px 13px; cursor: pointer;
+  }
+  button:hover { border-color: var(--text-muted); }
+  footer {
+    padding: 8px 20px 12px; font-size: 11px; color: var(--text-muted);
+    border-top: 1px solid var(--hairline); display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .readout {
+    position: absolute; pointer-events: none; background: var(--surface-2);
+    border: 1px solid var(--hairline); border-radius: 6px; padding: 5px 8px;
+    font-size: 11.5px; font-variant-numeric: tabular-nums; white-space: nowrap;
+    opacity: 0; transition: opacity 90ms; z-index: 5;
+  }
+  .wrap { position: relative; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  table.values { border-collapse: collapse; font-size: 11.5px; width: 100%; margin-top: 8px; }
+  table.values th, table.values td { text-align: right; padding: 2px 6px; font-variant-numeric: tabular-nums; }
+  table.values th:first-child, table.values td:first-child { text-align: left; color: var(--text-muted); }
+  table.values th { color: var(--text-muted); font-weight: 500; border-bottom: 1px solid var(--hairline); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>LiViFuser-Nav <span>— live policy overlay</span></h1>
+  <div class="chips" id="chips">
+    <span class="pill warning" id="status">◌ connecting</span>
+  </div>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Robot frame — live scan</h2>
+    <p class="sub">Forward is up. Faint points are raw LDS-03 returns; ringed marks are the 80 sectors the policy actually consumes.</p>
+    <div class="wrap">
+      <canvas id="topdown"></canvas>
+      <div class="readout" id="topdownReadout"></div>
+    </div>
+    <div class="legend">
+      <span class="key"><i class="swatch dot" style="background:var(--scan)"></i>raw scan</span>
+      <span class="key"><i class="swatch" style="background:var(--operator)"></i>operator command</span>
+      <span class="key"><i class="swatch" style="background:var(--policy)"></i>policy prediction</span>
+      <span class="key"><i class="swatch band" style="background:var(--policy)"></i>policy ±1σ</span>
+      <span class="key"><i class="swatch" style="background:var(--fov)"></i>camera FOV (calibrated, sensor offline)</span>
+    </div>
+  </section>
+
+  <section class="right">
+    <div class="panel" style="padding-bottom:14px">
+      <h2>Now</h2>
+      <p class="sub">First horizon step — the only step comparable to the command in force.</p>
+      <div class="tiles">
+        <div class="tile"><div class="label">Forward Δ</div><div class="value" id="tileDv">—<span class="unit">m/s</span></div></div>
+        <div class="tile"><div class="label">Turn Δ</div><div class="value" id="tileDw">—<span class="unit">rad/s</span></div></div>
+        <div class="tile"><div class="label">σ forward</div><div class="value" id="tileSv">—<span class="unit">m/s</span></div></div>
+        <div class="tile"><div class="label">Inference</div><div class="value" id="tileMs">—<span class="unit">ms</span></div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Forward velocity</h2>
+      <div class="wrap"><canvas id="traceV"></canvas><div class="readout" id="readoutV"></div></div>
+      <div class="legend">
+        <span class="key"><i class="swatch" style="background:var(--operator)"></i>operator (you)</span>
+        <span class="key"><i class="swatch" style="background:var(--policy)"></i>policy</span>
+        <span class="key"><i class="swatch band" style="background:var(--policy)"></i>policy ±1σ</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Turn rate</h2>
+      <div class="wrap"><canvas id="traceW"></canvas><div class="readout" id="readoutW"></div></div>
+      <div class="legend">
+        <span class="key"><i class="swatch" style="background:var(--operator)"></i>operator (you)</span>
+        <span class="key"><i class="swatch" style="background:var(--policy)"></i>policy</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Goal fed to the policy</h2>
+      <p class="sub">Model input only. Nothing subscribes to this and it cannot move the robot.</p>
+      <div class="controls">
+        <div class="control">
+          <label>Distance ρ <b id="rhoValue">1.00 m</b></label>
+          <input type="range" id="rho" min="0.2" max="3" step="0.05" value="1" />
+        </div>
+        <div class="control">
+          <label>Bearing α <b id="alphaValue">0°</b></label>
+          <input type="range" id="alpha" min="-90" max="90" step="1" value="0" />
+        </div>
+        <button id="pause">Pause traces</button>
+        <button id="tableToggle">Table view</button>
+      </div>
+      <table class="values" id="table" hidden>
+        <thead><tr><th>Horizon step</th><th>Policy v</th><th>σ v</th><th>Policy ω</th><th>σ ω</th></tr></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span id="provenance">checkpoint —</span>
+  <span id="calib">calibration —</span>
+  <span>The policy never commands the robot; this process creates no publisher.</span>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+  const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const COLORS = {};
+  for (const key of ["operator","policy","scan","fov","text-muted","text-secondary","hairline","surface-1","surface-2","good","warning","critical"]) {
+    COLORS[key] = css("--" + key);
+  }
+
+  const HISTORY = 260;            // ticks retained in the scrolling traces
+  const history = [];
+  let paused = false;
+  let latest = null;
+  let lastTick = -1;
+  let staleSince = performance.now();
+
+  /* ---------- canvas helpers ---------- */
+  function fit(canvas) {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    const width = Math.max(1, Math.round(rect.width * ratio));
+    const height = Math.max(1, Math.round(rect.height * ratio));
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width; canvas.height = height;
+    }
+    const context = canvas.getContext("2d");
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    return { context, width: rect.width, height: rect.height };
+  }
+
+  /* ---------- top-down view ---------- */
+  const topdown = document.getElementById("topdown");
+  const topdownReadout = document.getElementById("topdownReadout");
+  let hoverPoint = null;
+  const VIEW_M = 3.5;             // metres from the robot to the top edge
+
+  function drawTopdown() {
+    const { context, width, height } = fit(topdown);
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = COLORS["surface-1"];
+    context.fillRect(0, 0, width, height);
+
+    const originX = width / 2;
+    const originY = height * 0.66;
+    const scale = Math.min(originY / VIEW_M, (width / 2) / (VIEW_M * 0.72));
+    const toScreen = (x, y) => [originX - y * scale, originY - x * scale];
+
+    // range rings, recessive
+    context.strokeStyle = COLORS.hairline;
+    context.fillStyle = COLORS["text-muted"];
+    context.font = "10px ui-sans-serif, system-ui, sans-serif";
+    context.lineWidth = 1;
+    for (let metres = 1; metres <= 3; metres += 1) {
+      context.beginPath();
+      context.arc(originX, originY, metres * scale, 0, Math.PI * 2);
+      context.stroke();
+      context.fillText(metres + " m", originX + 4, originY - metres * scale - 3);
+    }
+
+    const frame = latest;
+    if (!frame || !frame.scan) { drawRobot(context, originX, originY, scale); return; }
+
+    // calibrated camera field of view, drawn from the same in_fov the model uses
+    const sectors = frame.sectors;
+    if (sectors) {
+      context.fillStyle = COLORS.fov;
+      context.globalAlpha = 0.30;
+      const span = (2 * Math.PI) / sectors.bearing_rad.length;
+      for (let index = 0; index < sectors.bearing_rad.length; index += 1) {
+        if (!sectors.in_fov[index]) continue;
+        const bearing = sectors.bearing_rad[index];
+        context.beginPath();
+        context.moveTo(originX, originY);
+        const [ax, ay] = toScreen(VIEW_M * Math.cos(bearing - span / 2), VIEW_M * Math.sin(bearing - span / 2));
+        const [bx, by] = toScreen(VIEW_M * Math.cos(bearing + span / 2), VIEW_M * Math.sin(bearing + span / 2));
+        context.lineTo(ax, ay); context.lineTo(bx, by);
+        context.closePath(); context.fill();
+      }
+      context.globalAlpha = 1;
+    }
+
+    // raw returns
+    context.fillStyle = COLORS.scan;
+    for (let index = 0; index < frame.scan.x.length; index += 1) {
+      const [sx, sy] = toScreen(frame.scan.x[index], frame.scan.y[index]);
+      context.beginPath();
+      context.arc(sx, sy, 1.6, 0, Math.PI * 2);
+      context.fill();
+    }
+
+    // the 80 sector marks the policy consumes, ringed against the surface
+    if (sectors) {
+      for (let index = 0; index < sectors.range_m.length; index += 1) {
+        const range = sectors.range_m[index];
+        if (!(range > 0) || range >= 9.99) continue;
+        const bearing = sectors.bearing_rad[index];
+        const [sx, sy] = toScreen(range * Math.cos(bearing), range * Math.sin(bearing));
+        context.beginPath();
+        context.arc(sx, sy, 3.2, 0, Math.PI * 2);
+        context.fillStyle = sectors.in_fov[index] ? COLORS["text-secondary"] : COLORS.scan;
+        context.fill();
+        context.lineWidth = 2;                       // 2px surface ring on overlap
+        context.strokeStyle = COLORS["surface-1"];
+        context.stroke();
+      }
+    }
+
+    // policy uncertainty envelope
+    const policy = frame.policy;
+    if (policy) {
+      context.beginPath();
+      policy.path_high.forEach(([x, y], index) => {
+        const [sx, sy] = toScreen(x, y);
+        index === 0 ? context.moveTo(sx, sy) : context.lineTo(sx, sy);
+      });
+      for (let index = policy.path_low.length - 1; index >= 0; index -= 1) {
+        const [sx, sy] = toScreen(policy.path_low[index][0], policy.path_low[index][1]);
+        context.lineTo(sx, sy);
+      }
+      context.closePath();
+      context.fillStyle = COLORS.policy;
+      context.globalAlpha = 0.24;
+      context.fill();
+      context.globalAlpha = 1;
+    }
+
+    // goal marker
+    if (frame.goal) {
+      const [gx, gy] = toScreen(frame.goal.xy[0], frame.goal.xy[1]);
+      context.strokeStyle = COLORS["text-secondary"];
+      context.lineWidth = 1.5;
+      context.beginPath(); context.arc(gx, gy, 7, 0, Math.PI * 2); context.stroke();
+      context.beginPath(); context.moveTo(gx - 10, gy); context.lineTo(gx + 10, gy);
+      context.moveTo(gx, gy - 10); context.lineTo(gx, gy + 10); context.stroke();
+      context.fillStyle = COLORS["text-muted"];
+      context.fillText("goal", gx + 11, gy - 8);
+    }
+
+    // the two paths, operator beneath policy
+    const path = (points, color, dash) => {
+      context.save();
+      context.setLineDash(dash || []);
+      context.strokeStyle = color;
+      context.lineWidth = 2;
+      context.lineJoin = "round"; context.lineCap = "round";
+      context.beginPath();
+      points.forEach(([x, y], index) => {
+        const [sx, sy] = toScreen(x, y);
+        index === 0 ? context.moveTo(sx, sy) : context.lineTo(sx, sy);
+      });
+      context.stroke();
+      const [ex, ey] = toScreen(points[points.length - 1][0], points[points.length - 1][1]);
+      context.fillStyle = color;
+      context.beginPath(); context.arc(ex, ey, 4, 0, Math.PI * 2); context.fill();
+      context.restore();
+      return [ex, ey];
+    };
+    if (frame.operator && frame.operator.path) {
+      const [ex, ey] = path(frame.operator.path, COLORS.operator, [5, 4]);
+      label(context, "you", ex, ey, COLORS.operator);
+    }
+    if (policy) {
+      const [ex, ey] = path(policy.path, COLORS.policy);
+      label(context, "policy", ex, ey, COLORS.policy);
+    }
+    drawRobot(context, originX, originY, scale);
+
+    if (hoverPoint) {
+      const metres = Math.hypot((hoverPoint.x - originX) / scale, (hoverPoint.y - originY) / scale);
+      const bearing = Math.atan2(-(hoverPoint.x - originX), -(hoverPoint.y - originY)) * 180 / Math.PI;
+      topdownReadout.textContent = metres.toFixed(2) + " m  ·  " + bearing.toFixed(0) + "°";
+      topdownReadout.style.left = (hoverPoint.x + 12) + "px";
+      topdownReadout.style.top = (hoverPoint.y - 10) + "px";
+      topdownReadout.style.opacity = "1";
+    } else {
+      topdownReadout.style.opacity = "0";
+    }
+  }
+
+  function label(context, text, x, y, color) {
+    context.font = "600 11px ui-sans-serif, system-ui, sans-serif";
+    const width = context.measureText(text).width;
+    context.fillStyle = COLORS["surface-1"];
+    context.fillRect(x + 6, y - 16, width + 8, 15);
+    context.fillStyle = color;
+    context.fillText(text, x + 10, y - 5);
+  }
+
+  function drawRobot(context, x, y, scale) {
+    const size = Math.max(9, 0.09 * scale);
+    context.save();
+    context.translate(x, y);
+    context.fillStyle = COLORS["text-primary"];
+    context.beginPath();
+    context.moveTo(0, -size);
+    context.lineTo(size * 0.72, size * 0.62);
+    context.lineTo(0, size * 0.3);
+    context.lineTo(-size * 0.72, size * 0.62);
+    context.closePath();
+    context.fill();
+    context.restore();
+  }
+
+  /* ---------- scrolling traces ---------- */
+  function drawTrace(canvasId, readoutId, meanKey, sigmaKey, operatorKey, unit) {
+    const canvas = document.getElementById(canvasId);
+    const readout = document.getElementById(readoutId);
+    const { context, width, height } = fit(canvas);
+    context.clearRect(0, 0, width, height);
+
+    const padLeft = 40, padRight = 10, padTop = 8, padBottom = 18;
+    const plotW = width - padLeft - padRight;
+    const plotH = height - padTop - padBottom;
+    if (plotW <= 0 || plotH <= 0) return;
+
+    let low = 0, high = 0;
+    for (const row of history) {
+      for (const value of [row[operatorKey], row[meanKey], row[meanKey] + row[sigmaKey], row[meanKey] - row[sigmaKey]]) {
+        if (Number.isFinite(value)) { low = Math.min(low, value); high = Math.max(high, value); }
+      }
+    }
+    const span = Math.max(high - low, 0.08);
+    low -= span * 0.12; high += span * 0.12;
+    const toY = (value) => padTop + plotH * (1 - (value - low) / (high - low));
+    const toX = (index) => padLeft + plotW * (index / Math.max(HISTORY - 1, 1));
+
+    // recessive gridlines and zero rule
+    context.strokeStyle = COLORS.hairline;
+    context.lineWidth = 1;
+    context.font = "10px ui-sans-serif, system-ui, sans-serif";
+    context.fillStyle = COLORS["text-muted"];
+    for (let step = 0; step <= 2; step += 1) {
+      const value = low + (high - low) * (step / 2);
+      const y = toY(value);
+      context.beginPath(); context.moveTo(padLeft, y); context.lineTo(width - padRight, y); context.stroke();
+      context.fillText(value.toFixed(2), 4, y + 3);
+    }
+    if (low < 0 && high > 0) {
+      context.strokeStyle = COLORS["text-muted"];
+      context.beginPath(); context.moveTo(padLeft, toY(0)); context.lineTo(width - padRight, toY(0)); context.stroke();
+    }
+    context.fillText(unit, padLeft, height - 5);
+
+    if (history.length < 2) return;
+    const offset = HISTORY - history.length;
+
+    if (sigmaKey) {                       // ±1σ band under the lines
+      context.beginPath();
+      history.forEach((row, index) => {
+        const x = toX(offset + index), y = toY(row[meanKey] + row[sigmaKey]);
+        index === 0 ? context.moveTo(x, y) : context.lineTo(x, y);
+      });
+      for (let index = history.length - 1; index >= 0; index -= 1) {
+        context.lineTo(toX(offset + index), toY(history[index][meanKey] - history[index][sigmaKey]));
+      }
+      context.closePath();
+      context.fillStyle = COLORS.policy; context.globalAlpha = 0.22; context.fill(); context.globalAlpha = 1;
+    }
+
+    const line = (key, color) => {
+      context.strokeStyle = color; context.lineWidth = 2;
+      context.lineJoin = "round"; context.lineCap = "round";
+      context.beginPath();
+      history.forEach((row, index) => {
+        const x = toX(offset + index), y = toY(row[key]);
+        index === 0 ? context.moveTo(x, y) : context.lineTo(x, y);
+      });
+      context.stroke();
+    };
+    line(operatorKey, COLORS.operator);
+    line(meanKey, COLORS.policy);
+
+    canvas.onmousemove = (event) => {
+      const rect = canvas.getBoundingClientRect();
+      const index = Math.round(((event.clientX - rect.left - padLeft) / plotW) * (HISTORY - 1)) - offset;
+      if (index < 0 || index >= history.length) { readout.style.opacity = "0"; return; }
+      const row = history[index];
+      readout.textContent = "you " + row[operatorKey].toFixed(3) + "  ·  policy " + row[meanKey].toFixed(3)
+        + (sigmaKey ? " ±" + row[sigmaKey].toFixed(3) : "");
+      readout.style.left = Math.min(event.clientX - rect.left + 12, width - 190) + "px";
+      readout.style.top = "6px";
+      readout.style.opacity = "1";
+    };
+    canvas.onmouseleave = () => { readout.style.opacity = "0"; };
+  }
+
+  topdown.addEventListener("mousemove", (event) => {
+    const rect = topdown.getBoundingClientRect();
+    hoverPoint = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+  });
+  topdown.addEventListener("mouseleave", () => { hoverPoint = null; });
+
+  /* ---------- panels ---------- */
+  const setText = (id, text) => { document.getElementById(id).firstChild.nodeValue = text; };
+
+  function updatePanels(frame) {
+    const status = document.getElementById("status");
+    const stale = performance.now() - staleSince > 1200;
+    if (frame.fatal) {
+      status.className = "pill critical";
+      status.textContent = "▲ " + (frame.status || "source stopped");
+    } else if (stale) {
+      status.className = "pill critical"; status.textContent = "▲ stream stalled";
+    } else if (!frame.policy) {
+      status.className = "pill warning";
+      status.textContent = "◌ " + (frame.status || "filling window")
+        + (frame.window_depth != null ? " (" + frame.window_depth + "/8)" : "");
+    } else {
+      status.className = "pill good"; status.textContent = "● live";
+    }
+
+    if (frame.identity && !document.getElementById("chipVariant")) {
+      const chips = document.getElementById("chips");
+      const add = (id, html) => {
+        const node = document.createElement("span");
+        node.className = "chip"; node.id = id; node.innerHTML = html;
+        chips.insertBefore(node, status);
+      };
+      add("chipVariant", "model <b>" + frame.identity.variant + "</b>");
+      add("chipParams", "<b>" + frame.identity.parameter_count.toLocaleString() + "</b> params · CPU");
+      add("chipRate", "<b>" + frame.identity.tick_hz + "</b> Hz · K=" + frame.identity.context_k + " H=" + frame.identity.horizon_h);
+      add("chipCamera", "camera <b>not used</b>");
+      document.getElementById("provenance").textContent = "checkpoint " + frame.identity.checkpoint;
+      document.getElementById("calib").textContent =
+        "calibration from " + (frame.identity.calibration_run_id || "—") + " · source " + frame.identity.source;
+    }
+
+    if (frame.policy) {
+      const agreement = frame.agreement || { linear_error_mps: 0, angular_error_radps: 0 };
+      setText("tileDv", (agreement.linear_error_mps >= 0 ? "+" : "") + agreement.linear_error_mps.toFixed(3));
+      setText("tileDw", (agreement.angular_error_radps >= 0 ? "+" : "") + agreement.angular_error_radps.toFixed(3));
+      setText("tileSv", frame.policy.sigma[0][0].toFixed(3));
+      setText("tileMs", frame.policy.inference_ms.toFixed(1));
+      const body = document.getElementById("tableBody");
+      body.innerHTML = frame.policy.mean.map((row, index) =>
+        "<tr><td>t+" + ((index + 1) / 10).toFixed(1) + " s</td><td>" + row[0].toFixed(3) + "</td><td>"
+        + frame.policy.sigma[index][0].toFixed(3) + "</td><td>" + row[1].toFixed(3) + "</td><td>"
+        + frame.policy.sigma[index][1].toFixed(3) + "</td></tr>").join("");
+    }
+  }
+
+  /* ---------- polling ---------- */
+  async function poll() {
+    try {
+      const response = await fetch("/state", { cache: "no-store" });
+      const frame = await response.json();
+      if (frame.tick !== lastTick) { lastTick = frame.tick; staleSince = performance.now(); }
+      latest = frame;
+      if (!paused && frame.policy && frame.operator) {
+        history.push({
+          v: frame.policy.mean[0][0], sv: frame.policy.sigma[0][0],
+          w: frame.policy.mean[0][1], sw: frame.policy.sigma[0][1],
+          ov: frame.operator.linear_mps, ow: frame.operator.angular_radps,
+        });
+        while (history.length > HISTORY) history.shift();
+      }
+      updatePanels(frame);
+    } catch (error) {
+      document.getElementById("status").className = "pill critical";
+      document.getElementById("status").textContent = "▲ no connection";
+    }
+  }
+  setInterval(poll, 70);
+
+  function render() {
+    drawTopdown();
+    drawTrace("traceV", "readoutV", "v", "sv", "ov", "m/s");
+    drawTrace("traceW", "readoutW", "w", "sw", "ow", "rad/s");
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+
+  /* ---------- controls ---------- */
+  const rho = document.getElementById("rho");
+  const alpha = document.getElementById("alpha");
+  async function pushGoal() {
+    document.getElementById("rhoValue").textContent = Number(rho.value).toFixed(2) + " m";
+    document.getElementById("alphaValue").textContent = alpha.value + "°";
+    try {
+      await fetch("/goal", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rho_m: Number(rho.value), alpha_deg: Number(alpha.value) }),
+      });
+    } catch (error) { /* the status pill already reports connection loss */ }
+  }
+  rho.addEventListener("input", pushGoal);
+  alpha.addEventListener("input", pushGoal);
+  document.getElementById("pause").addEventListener("click", (event) => {
+    paused = !paused;
+    event.target.textContent = paused ? "Resume traces" : "Pause traces";
+  });
+  document.getElementById("tableToggle").addEventListener("click", (event) => {
+    const table = document.getElementById("table");
+    table.hidden = !table.hidden;
+    event.target.textContent = table.hidden ? "Table view" : "Hide table";
+  });
+})();
+</script>
+</body>
+</html>

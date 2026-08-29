@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0.0-proposed",
+  "status": "PROPOSED_NOT_APPROVED_DEVELOPMENT_ONLY",
+  "amendment": "docs/experiments/PREREGISTRATION_SIM_CLOUD_RUNTIME_ROUTE_AMENDMENT_2026-08-24.md",
+  "authorization": {
+    "development_benchmark_and_smoke_only": true,
+    "confirmatory_launch_authorized": false,
+    "requires_explicit_user_approval_after_all_readiness_gates": true,
+    "physical_robot_allowed": false,
+    "physical_cmd_vel_allowed": false
+  },
+  "provider": {
+    "name": "RunPod",
+    "service_class": "on_demand_pod",
+    "spot_or_interruptible_allowed": false,
+    "template": "RunPod PyTorch 2.8.0",
+    "gpu_model_exact": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 1,
+    "minimum_vram_gib": 24,
+    "minimum_host_ram_gib": 110,
+    "minimum_vcpu": 32,
+    "host_cuda_driver_advertised": [
+      "13.0",
+      "13.2"
+    ],
+    "host_identity_must_be_captured_at_runtime": true,
+    "image_tag_must_contain": "ubuntu2204",
+    "rejected_image_example": "runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404 (Ubuntu 24.04, no ROS 2 Humble)",
+    "gazebo_version": "Fortress",
+    "gazebo_render_engine": "ogre1_headless",
+    "template_name_is_not_a_version_guarantee": "the RunPod PyTorch 2.8.0 template ships no torch; the bootstrap installs the pinned build itself"
+  },
+  "storage": {
+    "container_disk_gib": 50,
+    "container_disk_persistence": "EPHEMERAL",
+    "persistent_volume_mount": "/workspace",
+    "persistent_volume_gib": 1000,
+    "persistent_volume_encryption_required": true,
+    "minimum_free_bytes_before_confirmatory": 858993459200,
+    "minimum_free_bytes_before_each_rollout": 2147483648,
+    "all_evidence_root": "/workspace/livifuser/evidence",
+    "container_disk_evidence_forbidden": true,
+    "pod_deletion_before_verified_download_forbidden": true
+  },
+  "software_target": {
+    "operating_system": "Ubuntu 22.04",
+    "ros_distribution": "humble",
+    "python": "3.10",
+    "torch": "2.10.0",
+    "torch_cuda_runtime": "12.8",
+    "transformers": "4.56.0",
+    "huggingface_hub": "0.34.4",
+    "safetensors": "0.6.2",
+    "numpy": "2.0.2",
+    "pillow": "11.3.0",
+    "scipy": "1.15.3",
+    "mixed_precision_allowed": false,
+    "tf32_allowed": false,
+    "cudnn_benchmark_allowed": false,
+    "torch_deterministic_algorithms_required": true,
+    "operating_system_codename": "jammy",
+    "operating_system_is_load_bearing": "ROS 2 Humble has no Ubuntu 24.04 binaries and Gazebo Fortress is the Humble pairing; substituting Jazzy and Gazebo Harmonic would change the simulator that produced the confirmatory dataset",
+    "system_interpreter_path": "/usr/bin/python3",
+    "system_interpreter_version": "3.10",
+    "cublas_workspace_config": ":4096:8",
+    "cublas_workspace_config_reason": "cuBLAS GEMMs are non-deterministic under CUDA >= 10.2 without a dedicated workspace; torch.use_deterministic_algorithms(True) raises rather than returning irreproducible results",
+    "torch_build": "2.10.0+cu128",
+    "torch_pin_rationale": "2.10.0+cu128 is the build the Kaggle training and held-out evaluation ran on. The previously written 2.8.0 was taken from a RunPod template name, was never executed against this code, and raises IndexError in the frozen model's geometry cross-attention mask assignment. The CPU reference route's 2.13.0+cpu has no CUDA wheel.",
+    "cpu_reference_route_torch": "2.13.0+cpu"
+  },
+  "route_candidate": {
+    "name": "runpod_rtx3090_exact_pytorch_cuda_float32_eager",
+    "backbone_execution": "official_huggingface_pytorch_eager",
+    "policy_execution": "pytorch_eager",
+    "device": "cuda:0",
+    "live_cached_features_forbidden": true,
+    "reference_route": "exact_pytorch_cpu_float32_eager",
+    "selection_status": "UNBENCHMARKED_NOT_SELECTED"
+  },
+  "input_identities": {
+    "backbone_bundle": {
+      "path": "artifacts/livifuser_dinov3_vits16plus_backbone_c93d816_bundle.zip",
+      "sha256": "0F9F7CB99A955AE0B817762CC08565F0D3BD820CDD1692D71DC6B05E2CD9E9F3"
+    },
+    "backbone_weights": {
+      "model_id": "facebook/dinov3-vits16plus-pretrain-lvd1689m",
+      "revision": "c93d816fc9e567563bc068f01475bec89cc634a6",
+      "file": "model.safetensors",
+      "size_bytes": 114794096,
+      "sha256": "208146E499DACE99E4C9376DDB8A26F77D64C31C46C4DC4B86FF8BC63B0235E2"
+    },
+    "policy_payload": {
+      "path": "artifacts/livifuser_sim_closed_loop_policy_payload_v1_bundle.zip",
+      "sha256": "3A989EADD0DB8D995993D2042124E34C2C51FAAFC1A9C74EC60106E8A182C162",
+      "policy_identity_count": 12
+    },
+    "execution_contract": "config/simulation_closed_loop_execution_v1.proposed.json"
+  },
+  "prospective_acceptance": {
+    "input_scope": "training_validation_and_excluded_development_only",
+    "heldout_input_forbidden": true,
+    "confirmatory_input_forbidden": true,
+    "minimum_parity_frames": 32,
+    "parity_coverage": {
+      "world_topologies": [
+        "straight_corridor",
+        "dogleg_corridor"
+      ],
+      "available_conditions": [
+        "C0",
+        "C1",
+        "C4"
+      ],
+      "unavailable_condition": "C3b",
+      "unavailable_reason": "no excluded-development C3b policy export exists; confirmatory substitution is forbidden"
+    },
+    "all_12_policy_identities_required": true,
+    "patch_max_abs_error_lte": 0.0001,
+    "pooled_max_abs_error_lte": 0.0001,
+    "patch_one_minus_cosine_lte": 1e-05,
+    "pooled_one_minus_cosine_lte": 1e-05,
+    "downstream_first_action_max_abs_error_lte": 1e-05,
+    "minimum_timed_iterations_per_variant": 200,
+    "complete_path_p99_ms_lt": 100.0,
+    "missed_deadline_count_eq": 0,
+    "cuda_synchronize_around_each_timed_region": true,
+    "all_samples_all_requirements_must_pass": true
+  },
+  "development_gate": {
+    "target_wall_duration_hours": [
+      1,
+      2
+    ],
+    "excluded_development_only": true,
+    "may_select_runtime_route": true,
+    "may_support_scientific_claims": false,
+    "may_trigger_optional_stopping_on_confirmatory_scope": false,
+    "required_conditions": [
+      "C0",
+      "C1",
+      "C3b",
+      "C4"
+    ],
+    "required_topologies": [
+      "straight_corridor",
+      "dogleg_corridor"
+    ],
+    "required_terminal_and_fault_paths": [
+      "success",
+      "collision",
+      "scientific_timeout",
+      "stale_input",
+      "uncertainty_logging",
+      "clean_teardown"
+    ]
+  },
+  "confirmatory_scope_unchanged": {
+    "learned_policy_rollouts": 960,
+    "nav2_structural_probe_rollouts": 40,
+    "variants": [
+      "full",
+      "lidar_only",
+      "concat",
+      "rgb_only"
+    ],
+    "seeds": [
+      20260805,
+      20260806,
+      20260807
+    ],
+    "conditions": [
+      "C0",
+      "C1",
+      "C3b",
+      "C4"
+    ]
+  }
+}

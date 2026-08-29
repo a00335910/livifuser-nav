@@ -1,0 +1,15 @@
+{
+  "collision": false,
+  "context_sequence": 714,
+  "ground_truth_clearance_m": 0.3421671534291047,
+  "ground_truth_goal_distance_m": 0.22878308143739248,
+  "priority_reason": "success",
+  "schema_version": "1.1.0",
+  "seed": 20260806,
+  "stretched_interval_count": 0,
+  "success": true,
+  "terminal": true,
+  "terminal_reason": "success",
+  "uncertainty_intervention": false,
+  "variant": "lidar_only"
+}

@@ -1,0 +1,433 @@
+{
+  "collision_rates": {
+    "concat|C0|20260805": {
+      "denominator": 20,
+      "numerator": 18,
+      "rate": 0.9
+    },
+    "concat|C0|20260806": {
+      "denominator": 20,
+      "numerator": 18,
+      "rate": 0.9
+    },
+    "concat|C0|20260807": {
+      "denominator": 19,
+      "numerator": 3,
+      "rate": 0.15789473684210525
+    },
+    "concat|C1|20260805": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "concat|C1|20260806": {
+      "denominator": 8,
+      "numerator": 8,
+      "rate": 1.0
+    },
+    "concat|C1|20260807": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "concat|C3b|20260805": {
+      "denominator": 10,
+      "numerator": 9,
+      "rate": 0.9
+    },
+    "full|C0|20260805": {
+      "denominator": 20,
+      "numerator": 19,
+      "rate": 0.95
+    },
+    "full|C0|20260806": {
+      "denominator": 20,
+      "numerator": 20,
+      "rate": 1.0
+    },
+    "full|C0|20260807": {
+      "denominator": 20,
+      "numerator": 10,
+      "rate": 0.5
+    },
+    "full|C1|20260805": {
+      "denominator": 20,
+      "numerator": 20,
+      "rate": 1.0
+    },
+    "full|C1|20260806": {
+      "denominator": 10,
+      "numerator": 10,
+      "rate": 1.0
+    },
+    "full|C1|20260807": {
+      "denominator": 8,
+      "numerator": 8,
+      "rate": 1.0
+    },
+    "full|C3b|20260805": {
+      "denominator": 20,
+      "numerator": 20,
+      "rate": 1.0
+    },
+    "full|C3b|20260806": {
+      "denominator": 20,
+      "numerator": 18,
+      "rate": 0.9
+    },
+    "full|C3b|20260807": {
+      "denominator": 20,
+      "numerator": 10,
+      "rate": 0.5
+    },
+    "full|C4|20260805": {
+      "denominator": 20,
+      "numerator": 20,
+      "rate": 1.0
+    },
+    "full|C4|20260806": {
+      "denominator": 4,
+      "numerator": 4,
+      "rate": 1.0
+    },
+    "lidar_only|C0|20260805": {
+      "denominator": 20,
+      "numerator": 2,
+      "rate": 0.1
+    },
+    "lidar_only|C0|20260806": {
+      "denominator": 20,
+      "numerator": 10,
+      "rate": 0.5
+    },
+    "lidar_only|C0|20260807": {
+      "denominator": 20,
+      "numerator": 18,
+      "rate": 0.9
+    },
+    "lidar_only|C1|20260805": {
+      "denominator": 8,
+      "numerator": 1,
+      "rate": 0.125
+    },
+    "lidar_only|C1|20260806": {
+      "denominator": 8,
+      "numerator": 8,
+      "rate": 1.0
+    },
+    "lidar_only|C1|20260807": {
+      "denominator": 8,
+      "numerator": 8,
+      "rate": 1.0
+    },
+    "lidar_only|C3b|20260805": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "lidar_only|C3b|20260806": {
+      "denominator": 20,
+      "numerator": 18,
+      "rate": 0.9
+    },
+    "lidar_only|C3b|20260807": {
+      "denominator": 20,
+      "numerator": 16,
+      "rate": 0.8
+    },
+    "rgb_only|C0|20260805": {
+      "denominator": 20,
+      "numerator": 4,
+      "rate": 0.2
+    },
+    "rgb_only|C0|20260806": {
+      "denominator": 20,
+      "numerator": 13,
+      "rate": 0.65
+    },
+    "rgb_only|C0|20260807": {
+      "denominator": 20,
+      "numerator": 5,
+      "rate": 0.25
+    },
+    "rgb_only|C1|20260805": {
+      "denominator": 10,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "rgb_only|C1|20260806": {
+      "denominator": 8,
+      "numerator": 4,
+      "rate": 0.5
+    },
+    "rgb_only|C1|20260807": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    }
+  },
+  "contrasts": {
+    "C0|full-concat": {
+      "ci_high": 0.3620689655172414,
+      "ci_low": -0.06666666666666667,
+      "excludes_zero": false,
+      "pairs": 59,
+      "point": 0.12126436781609196,
+      "replicates": 10000,
+      "sign_test": {
+        "agree": false,
+        "note": "two worlds cannot yield p below 0.5; reported for completeness",
+        "p_value": 1.0,
+        "ties_excluded": 0,
+        "worlds": 2
+      }
+    },
+    "C0|full-lidar_only": {
+      "ci_high": -0.15000000000000002,
+      "ci_low": -0.5,
+      "excludes_zero": true,
+      "pairs": 60,
+      "point": -0.3333333333333333,
+      "replicates": 10000,
+      "sign_test": {
+        "agree": true,
+        "note": "two worlds cannot yield p below 0.5; reported for completeness",
+        "p_value": 0.5,
+        "ties_excluded": 0,
+        "worlds": 2
+      }
+    },
+    "C0|full-rgb_only": {
+      "ci_high": 0.3833333333333333,
+      "ci_low": 0.0,
+      "excludes_zero": false,
+      "pairs": 60,
+      "point": 0.15,
+      "replicates": 10000,
+      "sign_test": {
+        "agree": true,
+        "note": "two worlds cannot yield p below 0.5; reported for completeness",
+        "p_value": 1.0,
+        "ties_excluded": 1,
+        "worlds": 2
+      }
+    },
+    "C1|full-concat": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "excludes_zero": false,
+      "pairs": 24,
+      "point": 0.0,
+      "replicates": 10000,
+      "sign_test": {
+        "agree": false,
+        "p_value": 1.0,
+        "ties_excluded": 1,
+        "worlds": 1
+      }
+    },
+    "C1|full-lidar_only": {
+      "ci_high": -0.041666666666666664,
+      "ci_low": -0.375,
+      "excludes_zero": true,
+      "pairs": 24,
+      "point": -0.20833333333333334,
+      "replicates": 10000,
+      "sign_test": {
+        "agree": true,
+        "note": "two worlds cannot yield p below 0.5; reported for completeness",
+        "p_value": 1.0,
+        "ties_excluded": 0,
+        "worlds": 1
+      }
+    },
+    "C1|full-rgb_only": {
+      "ci_high": 0.0,
+      "ci_low": 0.0,
+      "excludes_zero": false,
+      "pairs": 26,
+      "point": 0.0,
+      "replicates": 10000,
+      "sign_test": {
+        "agree": false,
+        "p_value": 1.0,
+        "ties_excluded": 1,
+        "worlds": 1
+      }
+    }
+  },
+  "episodes": 505,
+  "operational": {
+    "attempts_total": 888,
+    "audit_clearances": 3,
+    "operational_failures": 5,
+    "teardown_leaks": 0
+  },
+  "success_rates": {
+    "concat|C0|20260805": {
+      "denominator": 20,
+      "numerator": 1,
+      "rate": 0.05
+    },
+    "concat|C0|20260806": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "concat|C0|20260807": {
+      "denominator": 19,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "concat|C1|20260805": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "concat|C1|20260806": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "concat|C1|20260807": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "concat|C3b|20260805": {
+      "denominator": 10,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C0|20260805": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C0|20260806": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C0|20260807": {
+      "denominator": 20,
+      "numerator": 9,
+      "rate": 0.45
+    },
+    "full|C1|20260805": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C1|20260806": {
+      "denominator": 10,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C1|20260807": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C3b|20260805": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C3b|20260806": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C3b|20260807": {
+      "denominator": 20,
+      "numerator": 6,
+      "rate": 0.3
+    },
+    "full|C4|20260805": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "full|C4|20260806": {
+      "denominator": 4,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "lidar_only|C0|20260805": {
+      "denominator": 20,
+      "numerator": 17,
+      "rate": 0.85
+    },
+    "lidar_only|C0|20260806": {
+      "denominator": 20,
+      "numerator": 10,
+      "rate": 0.5
+    },
+    "lidar_only|C0|20260807": {
+      "denominator": 20,
+      "numerator": 2,
+      "rate": 0.1
+    },
+    "lidar_only|C1|20260805": {
+      "denominator": 8,
+      "numerator": 5,
+      "rate": 0.625
+    },
+    "lidar_only|C1|20260806": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "lidar_only|C1|20260807": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "lidar_only|C3b|20260805": {
+      "denominator": 20,
+      "numerator": 18,
+      "rate": 0.9
+    },
+    "lidar_only|C3b|20260806": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "lidar_only|C3b|20260807": {
+      "denominator": 20,
+      "numerator": 3,
+      "rate": 0.15
+    },
+    "rgb_only|C0|20260805": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "rgb_only|C0|20260806": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "rgb_only|C0|20260807": {
+      "denominator": 20,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "rgb_only|C1|20260805": {
+      "denominator": 10,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "rgb_only|C1|20260806": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    },
+    "rgb_only|C1|20260807": {
+      "denominator": 8,
+      "numerator": 0,
+      "rate": 0.0
+    }
+  }
+}

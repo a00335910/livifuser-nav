@@ -1,0 +1,6 @@
+# Recorder-only mitigation for reliable /cmd_vel writer backpressure.
+# Keep the watchdog publisher RELIABLE so turtlebot3_node remains compatible.
+/cmd_vel:
+  history: keep_last
+  depth: 10
+  reliability: best_effort

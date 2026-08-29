@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "name": "livifuser_sim_confirmatory_batch_v1",
+  "freeze_manifest": "docs/experiments/PREREGISTRATION_FREEZE_SIM_V1.json",
+  "freeze_commit": "1b0b6e64f318748cd6f1de4024865fbebdeb2932",
+  "amendment": "docs/experiments/PREREGISTRATION_SIM_SENSOR_FAILURE_AMENDMENT_1.json",
+  "amendment_commit": "fc7457b5580a835452dce46853202de7bff65b8b",
+  "amendment_sha256": "1E35131E5DA8898A3D26EFA63A4C77AF081FCC26A6CFA0FA34DD5A62B3B5AECC",
+  "output_root": "artifacts/simulation/confirmatory_v1",
+  "wsl_distribution": "Ubuntu-TB3",
+  "scientific_simulated_deadline_sec": 120.0,
+  "operational_wall_watchdog_sec": 240.0,
+  "minimum_free_gib_before_run": 150.0,
+  "groups": {
+    "train": {"worlds": 6, "episodes_per_world": 20, "conditions": ["C0"]},
+    "val_id": {"worlds": 2, "episodes_per_world": 15, "conditions": ["C0"]},
+    "test_id": {"worlds": 2, "episodes_per_world": 15, "conditions": ["C0"]},
+    "test_ood": {
+      "worlds": 2,
+      "source_group": "test_id",
+      "episodes_per_world": 10,
+      "conditions": ["C0", "C1", "C3", "C4"]
+    }
+  },
+  "condition_implementation": {
+    "C0": {"world_variant": "C0", "lidar_condition": "C0"},
+    "C1": {"world_variant": "C1", "lidar_condition": "C0"},
+    "C3": {"world_variant": "C0", "lidar_condition": "C3b"},
+    "C4": {"world_variant": "C4", "lidar_condition": "C0"}
+  },
+  "observation_seed_blocks": {
+    "train": 51000000,
+    "val_id": 52000000,
+    "test_id": 53000000,
+    "test_ood": 54000000
+  },
+  "observation_seed_world_stride": 1000,
+  "topics": [
+    "/camera/image_raw",
+    "/camera/camera_info",
+    "/scan",
+    "/odom",
+    "/livifuser/goal_relative",
+    "/livifuser/cmd_vel_stamped",
+    "/tf",
+    "/tf_static",
+    "/clock"
+  ]
+}

@@ -1,0 +1,26 @@
+image_width: 320
+image_height: 240
+camera_name: rpi_camera_v3
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [316.21156,   0.     , 223.13834,
+           0.     , 315.6497 , 107.39364,
+           0.     ,   0.     ,   1.     ]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.012344, 0.038138, -0.016819, 0.004823, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+         0., 1., 0.,
+         0., 0., 1.]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [321.69766,   0.     , 222.50471,   0.     ,
+           0.     , 318.87292, 102.86607,   0.     ,
+           0.     ,   0.     ,   1.     ,   0.     ]

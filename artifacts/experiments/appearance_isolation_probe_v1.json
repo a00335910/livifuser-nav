@@ -1,0 +1,148 @@
+{
+  "bundle_sha256": "7FB323948427AB6FC1F5F82F2CEF5E66DDB51F056C031132B2EE8C9B9F0484E5",
+  "centered": {
+    "appearance_isolated": {
+      "max": 1.5623569177576522,
+      "mean": 1.3012034938366352,
+      "min": 1.1030997209990137,
+      "n": 20,
+      "sd": 0.13438373971882475
+    },
+    "geometry_cross_archetype": {
+      "max": 0.8028342560853212,
+      "mean": 0.6728252143307809,
+      "min": 0.5771303686274581,
+      "n": 100,
+      "sd": 0.049822578585190305
+    },
+    "geometry_within_world": {
+      "max": 0.3911518695695529,
+      "mean": 0.24243066602831753,
+      "min": 0.14432098814673439,
+      "n": 90,
+      "sd": 0.04495106783867651
+    },
+    "ratio_vs_cross_archetype": {
+      "ci_high": 2.025521545495545,
+      "ci_low": 1.8450484812898136,
+      "ratio": 1.9339398496396494,
+      "replicates": 10000
+    },
+    "ratio_vs_within_world": {
+      "ci_high": 5.687063648664519,
+      "ci_low": 5.05599740630854,
+      "ratio": 5.3673221921712075,
+      "replicates": 10000
+    }
+  },
+  "frames_per_episode": 40,
+  "note": "Paired C0/C1 episodes share world, start, goal, episode index and observation seed, and differ only in the rendered scene. Frame counts differ slightly because causal association rejects a different set of ticks under each rendering, so the comparison is distributional over an episode rather than frame-by-frame.",
+  "pooled": {
+    "appearance_isolated": {
+      "max": 1.5867963150211946,
+      "mean": 1.412902840506656,
+      "min": 1.2232468452537788,
+      "n": 20,
+      "sd": 0.1377207987939452
+    },
+    "geometry_cross_archetype": {
+      "max": 0.8330509832090124,
+      "mean": 0.6754315178477356,
+      "min": 0.5606839644360653,
+      "n": 100,
+      "sd": 0.07190350852984737
+    },
+    "geometry_within_world": {
+      "max": 0.3816864718506724,
+      "mean": 0.2414918907054625,
+      "min": 0.1246480666632605,
+      "n": 90,
+      "sd": 0.053891596848474714
+    },
+    "ratio_vs_cross_archetype": {
+      "ci_high": 2.1909199133521193,
+      "ci_low": 1.9951460854040672,
+      "ratio": 2.091852102207008,
+      "replicates": 10000
+    },
+    "ratio_vs_within_world": {
+      "ci_high": 6.218252234826837,
+      "ci_low": 5.49162519446856,
+      "ratio": 5.850725820975554,
+      "replicates": 10000
+    }
+  },
+  "seed": 20260824,
+  "sensitivity": [
+    {
+      "appearance_mean": 1.5078105231083732,
+      "frames_per_episode": 20,
+      "geometry_within_mean": 0.38574257802885575,
+      "ratio_vs_within_world": 3.9088516772332564,
+      "sampler_seed": 20260924
+    },
+    {
+      "appearance_mean": 1.4880097356197017,
+      "frames_per_episode": 20,
+      "geometry_within_mean": 0.3620517983621972,
+      "ratio_vs_within_world": 4.109936043270511,
+      "sampler_seed": 20260925
+    },
+    {
+      "appearance_mean": 1.4696653534127935,
+      "frames_per_episode": 20,
+      "geometry_within_mean": 0.35384988137989143,
+      "ratio_vs_within_world": 4.153358332865931,
+      "sampler_seed": 20260926
+    },
+    {
+      "appearance_mean": 1.4379897022745265,
+      "frames_per_episode": 40,
+      "geometry_within_mean": 0.2808443263632931,
+      "ratio_vs_within_world": 5.120237680765462,
+      "sampler_seed": 20260924
+    },
+    {
+      "appearance_mean": 1.4307114510594785,
+      "frames_per_episode": 40,
+      "geometry_within_mean": 0.271219306992743,
+      "ratio_vs_within_world": 5.2751091613760375,
+      "sampler_seed": 20260925
+    },
+    {
+      "appearance_mean": 1.407370155184029,
+      "frames_per_episode": 40,
+      "geometry_within_mean": 0.23829874395172165,
+      "ratio_vs_within_world": 5.9059067280235285,
+      "sampler_seed": 20260926
+    },
+    {
+      "appearance_mean": 1.3940371958703555,
+      "frames_per_episode": 80,
+      "geometry_within_mean": 0.21944327256995189,
+      "ratio_vs_within_world": 6.352608487580673,
+      "sampler_seed": 20260924
+    },
+    {
+      "appearance_mean": 1.39919335506528,
+      "frames_per_episode": 80,
+      "geometry_within_mean": 0.20085569091796052,
+      "ratio_vs_within_world": 6.96616236597837,
+      "sampler_seed": 20260925
+    },
+    {
+      "appearance_mean": 1.3930531020613333,
+      "frames_per_episode": 80,
+      "geometry_within_mean": 0.2040295524095717,
+      "ratio_vs_within_world": 6.8277025833242995,
+      "sampler_seed": 20260926
+    }
+  ],
+  "sensitivity_summary": {
+    "configurations": 9,
+    "ratio_max": 6.96616236597837,
+    "ratio_mean": 5.40220811782423,
+    "ratio_min": 3.9088516772332564
+  },
+  "status": "EXPLORATORY_POST_HOC_ANALYSIS_NOT_CONFIRMATORY"
+}

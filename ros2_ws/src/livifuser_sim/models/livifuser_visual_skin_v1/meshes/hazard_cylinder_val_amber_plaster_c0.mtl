@@ -1,0 +1,6 @@
+newmtl textured
+Ka 1.0 1.0 1.0
+Kd 1.0 1.0 1.0
+Ks 0.08 0.08 0.08
+Ns 16.0
+map_Kd ../materials/textures/hazard_val_amber_plaster_c0.png

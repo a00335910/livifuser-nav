@@ -1,0 +1,24 @@
+{
+  "experiment_id": "dev_lidar_c3_vacuity_finetune_v1",
+  "disposition": "development-only C0 competence tuning before C3 non-vacuity; not confirmatory evidence",
+  "seed": 20260822,
+  "context_k": 8,
+  "horizon_h": 8,
+  "lidar_sectors": 80,
+  "lidar_range_clip_m": 10.0,
+  "visual_mask_radius_tokens": 1,
+  "batch_size": 32,
+  "steps": 300,
+  "learning_rate": 0.0002,
+  "lr_floor_fraction": 0.1,
+  "weight_decay": 0.0,
+  "gradient_clip_norm": 1.0,
+  "torch_threads": 6,
+  "log_every_steps": 50,
+  "near_goal_threshold_m": 0.5,
+  "near_goal_oversample_factor": 6.0,
+  "temporary_backbone": {
+    "used": false,
+    "reason": "The preregistered vacuity subject is the LiDAR-only learned policy; RGB and DINO are structurally absent."
+  }
+}

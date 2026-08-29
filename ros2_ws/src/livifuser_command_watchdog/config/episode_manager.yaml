@@ -1,0 +1,25 @@
+livifuser_episode_manager:
+  ros__parameters:
+    # Identity fields and output_path are deliberately blank here. Every run
+    # must provide them explicitly so one episode cannot inherit another's ID.
+    episode_id: ""
+    output_path: ""
+    environment_id: ""
+    split: ""
+    route_id: ""
+    layout_id: ""
+    code_revision: ""
+    duration_s: 45.0
+    zero_warmup_s: 2.0
+    zero_cooldown_s: 2.0
+    operator_timeout_ms: 250.0
+    linear_mps: 0.08
+    angular_radps: 0.40
+    rate_hz: 10.0
+    preflight_timeout_s: 30.0
+    recorder_ready_timeout_s: 15.0
+    goal_tolerance_m: 0.25
+    goal_required_samples: 3
+    minimum_free_gib: 1.5
+    storage_id: mcap
+    frame_id: base_link

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "name": "lds03_measured_nominal_v1",
+  "domain": "simulation",
+  "source_artifact": {
+    "path": "artifacts/lidar/lds03_characterization_v1_2026-08-08.json",
+    "sha256": "5A515F681C0235497C77DBC756DAA1F3FA8B03DA5925D5D9B17488824E2280FD",
+    "physical_bag_count": 20,
+    "scan_count": 15295,
+    "beam_observation_count": 6112509
+  },
+  "beam_count_histogram": {
+    "379": 2,
+    "382": 2,
+    "385": 2,
+    "388": 1,
+    "390": 1,
+    "393": 1,
+    "395": 2,
+    "396": 8,
+    "397": 60,
+    "398": 1489,
+    "399": 5562,
+    "400": 5368,
+    "401": 2300,
+    "402": 424,
+    "403": 50,
+    "404": 12,
+    "405": 5,
+    "406": 5,
+    "407": 1
+  },
+  "angular_geometry": {
+    "angle_min_rad": 0.0,
+    "angle_max_rad": 6.283185307179586,
+    "increment_rule": "2*pi/(beam_count+1)"
+  },
+  "scan_interval_sec": 0.099677066,
+  "range_noise_sigma_m": 0.0030821574918964006,
+  "range_quantization_step_m": 0.001,
+  "stochastic_missing_return_probability": 0.000087,
+  "no_return_encoding_counts": {
+    "zero": 124051,
+    "nan": 79723
+  },
+  "excluded_from_nominal_dropout": {
+    "aggregate_no_return_occupancy": 0.033381709540223174,
+    "reason": "Dominated by genuine geometric no-returns already produced by ray casting; it must not be injected again."
+  }
+}

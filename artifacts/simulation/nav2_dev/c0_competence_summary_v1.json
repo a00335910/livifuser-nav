@@ -1,0 +1,320 @@
+{
+  "schema_version": 1,
+  "scope": "development-only Nav2 structural probe",
+  "condition": "C0",
+  "params_path": "D:\\LiViFuser\\ros2_ws\\src\\livifuser_sim\\config\\nav2_dev_probe_v1.yaml",
+  "params_sha256": "BA5E2A1B452D580E8479BEDA2211F6E53C2C9DBBDBE5F7F47509F6A88DD59D60",
+  "episode_count": 10,
+  "success_count": 10,
+  "success_rate": 1.0,
+  "collision_count": 0,
+  "collision_rate": 0.0,
+  "all_nav2_actions_succeeded": true,
+  "total_clamped_commands": 0,
+  "total_invalid_commands": 0,
+  "minimum_clearance_m": 0.2553468950167289,
+  "median_clearance_m": 0.26656418149862837,
+  "wall_elapsed_sec": {
+    "minimum": 24.948639270000058,
+    "median": 30.88286206500004,
+    "maximum": 36.94298893900009,
+    "total": 312.5121424190005
+  },
+  "runs": [
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\dogleg_c0_seed1200024.json",
+      "world": "dev_dogleg_corridor_001",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24550617797767882,
+      "minimum_collision_clearance_m": 0.2754794845126936,
+      "wall_elapsed_sec": 26.682552309000016,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 348,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "06707C736D05A0068CEC8A73DB16907DF247A591374F2CA396CD9052B92B62CA",
+      "nav2_status_sha256": "8F592DF8AE9558C69AF5634DA62531AC28EA7DD995F4FBB0F7F4C585F237BBAE",
+      "map_pgm_sha256": "03B768F588A2F15429937F91CA69F8152D32EA12FE32DEE6B4CCA0D8ADC6A843",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "bend_block"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "bend_pillar"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\dogleg_c0_seed1200025.json",
+      "world": "dev_dogleg_corridor_001",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24309388101877433,
+      "minimum_collision_clearance_m": 0.2802860744471716,
+      "wall_elapsed_sec": 27.18383337099999,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 343,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "9D7BCC22DE13C02240FF6D7C96EB724AA4273EA993B96621EE0E3008069CAFDF",
+      "nav2_status_sha256": "4D5570CBF1348F29BAC83D85D203B4D1EE17CCF36C1C596107FE700109BCC22A",
+      "map_pgm_sha256": "03B768F588A2F15429937F91CA69F8152D32EA12FE32DEE6B4CCA0D8ADC6A843",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "bend_block"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "bend_pillar"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\dogleg_c0_seed1200026.json",
+      "world": "dev_dogleg_corridor_001",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24354320614200498,
+      "minimum_collision_clearance_m": 0.2760784059415864,
+      "wall_elapsed_sec": 27.858473661000062,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 359,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "B7A1B2A931AFD3387AC30AFD7C552078B2922DE812BDB74C4CA555F264CA1EB2",
+      "nav2_status_sha256": "14D092ACE8427BFA53D102F62AC92329D0C367342ACF99FAD270A05649FC7E35",
+      "map_pgm_sha256": "03B768F588A2F15429937F91CA69F8152D32EA12FE32DEE6B4CCA0D8ADC6A843",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "bend_block"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "bend_pillar"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\dogleg_c0_seed1200027.json",
+      "world": "dev_dogleg_corridor_001",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.2499928662236899,
+      "minimum_collision_clearance_m": 0.27492250611755376,
+      "wall_elapsed_sec": 24.948639270000058,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 341,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "1405C0DFED4A556A585A7DAA108B9505ACD148361677AB0FD71B84A83F4D5639",
+      "nav2_status_sha256": "2718EF08841E89E6779A4109C6138C37435DB0119A5E6FCF764CBECF49CC1BFA",
+      "map_pgm_sha256": "03B768F588A2F15429937F91CA69F8152D32EA12FE32DEE6B4CCA0D8ADC6A843",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "bend_block"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "bend_pillar"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\dogleg_c0_seed1200028.json",
+      "world": "dev_dogleg_corridor_001",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24935146227782984,
+      "minimum_collision_clearance_m": 0.27960970935954366,
+      "wall_elapsed_sec": 26.217659872000013,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 326,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "2E3A1ECE51DB1D0A6A0C9E89B9770BC64EC1CA85A17B1EC0C325C4191C4F87BD",
+      "nav2_status_sha256": "C5FE21F64C508412EB26CF9EA0EA294A6711D33DF19BDB0CF8CCA3488711EB93",
+      "map_pgm_sha256": "03B768F588A2F15429937F91CA69F8152D32EA12FE32DEE6B4CCA0D8ADC6A843",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "bend_block"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "bend_pillar"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\straight_c0_seed1300024.json",
+      "world": "dev_straight_corridor_000",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24336722666453958,
+      "minimum_collision_clearance_m": 0.2576623870089968,
+      "wall_elapsed_sec": 36.534075625000014,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 439,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "35A10818DB6BB067968C1B47A5E68BB6C1933BB713E8C265C6B919102C2AF9FD",
+      "nav2_status_sha256": "7F2A10D6EAB14AB2F4A5D4DA31BCBFFEE123085494A0A15E10C1E626913F484D",
+      "map_pgm_sha256": "CD7D3B78126ED683C4644CD1B2A3D0A8B66BEE2B6FC09EF0C3B441AE3846A664",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "crate_0"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "crate_1",
+        "pillar_2"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\straight_c0_seed1300025.json",
+      "world": "dev_straight_corridor_000",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.2432020264952262,
+      "minimum_collision_clearance_m": 0.258205856879703,
+      "wall_elapsed_sec": 36.94298893900009,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 421,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "8601C6BED7C04AB134922F4977CC4B7ABF3C7FA5FE5B72B5F585FA7D71AE7335",
+      "nav2_status_sha256": "F3996C3B1308398F1D2B85A0AD1F6706F915B9D94FEB9DE899EA3834B057E07C",
+      "map_pgm_sha256": "CD7D3B78126ED683C4644CD1B2A3D0A8B66BEE2B6FC09EF0C3B441AE3846A664",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "crate_0"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "crate_1",
+        "pillar_2"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\straight_c0_seed1300026.json",
+      "world": "dev_straight_corridor_000",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24943168362149282,
+      "minimum_collision_clearance_m": 0.2568999496337833,
+      "wall_elapsed_sec": 36.0294038200002,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 417,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "745129E8CAFBF398FE99D580E6A9F4A5F8BD9960064162042EC7E1DC41EFFBE5",
+      "nav2_status_sha256": "497AB2E81A6D67B3AC0DFDB4D09BD56D330B1C1B816A945F357F95FAAAF30965",
+      "map_pgm_sha256": "CD7D3B78126ED683C4644CD1B2A3D0A8B66BEE2B6FC09EF0C3B441AE3846A664",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "crate_0"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "crate_1",
+        "pillar_2"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\straight_c0_seed1300027.json",
+      "world": "dev_straight_corridor_000",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24869697483256104,
+      "minimum_collision_clearance_m": 0.2553468950167289,
+      "wall_elapsed_sec": 33.90725046900002,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 414,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "DA39D6AB3AB9CA2C21205D88189BA8C1DC3355595376A07769AB6AAF9376E567",
+      "nav2_status_sha256": "A7B54AA399ACC766A15C5EE171C0D9B71AFC20897CC978451F0D1036D05ED290",
+      "map_pgm_sha256": "CD7D3B78126ED683C4644CD1B2A3D0A8B66BEE2B6FC09EF0C3B441AE3846A664",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "crate_0"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "crate_1",
+        "pillar_2"
+      ]
+    },
+    {
+      "episode": "D:\\LiViFuser\\artifacts\\simulation\\nav2_dev\\straight_c0_seed1300028.json",
+      "world": "dev_straight_corridor_000",
+      "valid": true,
+      "issues": [],
+      "goal_reached": true,
+      "collision": false,
+      "final_goal_distance_m": 0.24540046746037214,
+      "minimum_collision_clearance_m": 0.2565062938412073,
+      "wall_elapsed_sec": 36.20726508300004,
+      "nav2_phase": "succeeded",
+      "nav2_result_status": 4,
+      "command_count": 415,
+      "clamped_command_count": 0,
+      "invalid_command_count": 0,
+      "verifier_sha256": "50E58498B2FA53831C86D72B2B80FB45C6760834F2725780CCF81896A5C30882",
+      "nav2_status_sha256": "B578FC838D4423120514BCBDB5E6280D9E18BE5C63F395CA65534A9699590486",
+      "map_pgm_sha256": "CD7D3B78126ED683C4644CD1B2A3D0A8B66BEE2B6FC09EF0C3B441AE3846A664",
+      "map_included_obstacles": [
+        "left_wall",
+        "right_wall",
+        "end_wall",
+        "start_wall",
+        "crate_0"
+      ],
+      "map_excluded_switchable_obstacles": [
+        "crate_1",
+        "pillar_2"
+      ]
+    }
+  ]
+}

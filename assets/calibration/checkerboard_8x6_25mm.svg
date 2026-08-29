@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="297mm"
+     height="210mm"
+     viewBox="0 0 297 210">
+  <title>LiViFuser camera calibration checkerboard — 8x6 inner corners, 25 mm squares</title>
+  <defs>
+    <pattern id="checker" x="36" y="17.5" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="25" height="25" fill="#000"/>
+      <rect x="25" y="25" width="25" height="25" fill="#000"/>
+    </pattern>
+  </defs>
+
+  <rect width="297" height="210" fill="#fff"/>
+  <!-- 9 x 7 squares gives 8 x 6 internal corners. -->
+  <rect x="36" y="17.5" width="225" height="175" fill="url(#checker)"/>
+  <rect x="36" y="17.5" width="225" height="175" fill="none" stroke="#000" stroke-width="0.25"/>
+
+  <!-- A print-scale check outside the calibration target. -->
+  <line x1="98.5" y1="202" x2="198.5" y2="202" stroke="#000" stroke-width="0.5"/>
+  <line x1="98.5" y1="199" x2="98.5" y2="205" stroke="#000" stroke-width="0.5"/>
+  <line x1="198.5" y1="199" x2="198.5" y2="205" stroke="#000" stroke-width="0.5"/>
+  <text x="148.5" y="208" text-anchor="middle" font-family="sans-serif" font-size="3.5">
+    This line must measure exactly 100 mm — print at 100% / Actual Size
+  </text>
+</svg>

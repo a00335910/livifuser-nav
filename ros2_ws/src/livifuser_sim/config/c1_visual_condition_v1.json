@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "C1_WARM_LOW_LIGHT_V1",
+  "description": "Frozen camera-visible scene intervention: dim warm illumination, changed shadow direction, and a deterministic material-palette permutation. No blur, noise, occlusion, geometry, physics, LiDAR, or label change.",
+  "scene": {
+    "ambient_rgba": [0.25, 0.18, 0.12, 1.0],
+    "background_rgba": [0.08, 0.055, 0.035, 1.0],
+    "shadows": true
+  },
+  "directional_light": {
+    "name": "sun",
+    "pose_xyz_rpy": [0.0, 0.0, 8.0, 0.0, 0.0, 0.0],
+    "diffuse_rgba": [0.55, 0.38, 0.22, 1.0],
+    "specular_rgba": [0.06, 0.04, 0.025, 1.0],
+    "direction_xyz": [0.45, -0.25, -0.86]
+  },
+  "material_transform": {
+    "rgb_permutation": [2, 0, 1],
+    "rgb_scale": [1.0, 1.0, 1.0],
+    "alpha": "preserve"
+  },
+  "development_gate": {
+    "minimum_mean_absolute_channel_mean_delta": 0.05,
+    "minimum_c1_to_c0_luminance_ratio": 0.25,
+    "maximum_c1_to_c0_luminance_ratio": 0.80,
+    "minimum_c1_luminance_std": 0.03,
+    "maximum_c1_near_black_fraction": 0.35,
+    "maximum_c1_near_white_fraction": 0.05
+  },
+  "invariants": {
+    "geometry": "unchanged",
+    "collision": "unchanged",
+    "expert": "unchanged",
+    "lidar": "unchanged",
+    "camera_intrinsics_and_rate": "unchanged",
+    "post_processing": "none"
+  }
+}

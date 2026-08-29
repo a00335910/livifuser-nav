@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.0.0-proposed",
+  "status": "PROPOSED_NOT_APPROVED_DO_NOT_EXECUTE",
+  "amendment": "docs/experiments/PREREGISTRATION_SIM_CLOSED_LOOP_EXECUTION_AMENDMENT_2026-08-24.md",
+  "authorization": {
+    "confirmatory_launch_authorized": false,
+    "requires_explicit_user_approval_after_all_readiness_gates": true,
+    "physical_robot_allowed": false,
+    "cmd_vel_allowed": false
+  },
+  "schedule": {
+    "path": "artifacts/simulation/confirmatory_v3/schedule.json",
+    "schedule_sha256_excludes_self": "85F48F81D52F82A5CD64D14D704E032617582D7F5462A7B6FD46C5E64899047D",
+    "learned_source_split": "test_ood",
+    "learned_source_ordinals_inclusive": [
+      180,
+      259
+    ],
+    "conditions": [
+      "C0",
+      "C1",
+      "C3b",
+      "C4"
+    ],
+    "scientific_simulated_deadline_sec": 120.0,
+    "operational_wall_watchdog_sec": 240.0
+  },
+  "learned_scope": {
+    "variants": [
+      "full",
+      "lidar_only",
+      "concat",
+      "rgb_only"
+    ],
+    "seeds": [
+      20260805,
+      20260806,
+      20260807
+    ],
+    "episodes_per_policy_identity": 80,
+    "policy_identities": 12,
+    "rollouts": 960
+  },
+  "nav2_structural_probe": {
+    "conditions": [
+      "C0",
+      "C4"
+    ],
+    "episodes_per_condition": 20,
+    "seed_replication": false,
+    "rollouts": 40,
+    "footprint_radius_m": 0.105,
+    "max_linear_velocity_mps": 0.08,
+    "max_angular_velocity_radps": 0.4,
+    "max_linear_acceleration_mps2": 0.5,
+    "max_angular_acceleration_radps2": 1.0,
+    "goal_tolerance_m": 0.25,
+    "goal_yaw_ignored": true
+  },
+  "execution_order": {
+    "learned_first": true,
+    "learned_nesting": [
+      "variant",
+      "seed",
+      "schedule_ordinal"
+    ],
+    "variant_order": [
+      "full",
+      "lidar_only",
+      "concat",
+      "rgb_only"
+    ],
+    "seed_order": [
+      20260805,
+      20260806,
+      20260807
+    ],
+    "schedule_ordinal_order": "ascending_180_through_259",
+    "nav2_after_learned": "AFTER_LEARNED_AND_CONSTANT_ARM",
+    "nav2_subset": "C0_C4_ASCENDING_SCHEDULE_ORDINAL",
+    "total_identity_count": 1080,
+    "constant_arm_after_learned": true,
+    "constant_arm_before_nav2": true,
+    "constant_arm_order": "ascending_180_through_259"
+  },
+  "backbone": {
+    "model_id": "facebook/dinov3-vits16plus-pretrain-lvd1689m",
+    "revision": "c93d816fc9e567563bc068f01475bec89cc634a6",
+    "weights_file": "model.safetensors",
+    "weights_size_bytes": 114794096,
+    "weights_sha256": "208146E499DACE99E4C9376DDB8A26F77D64C31C46C4DC4B86FF8BC63B0235E2",
+    "hidden_shape": [
+      1,
+      201,
+      384
+    ],
+    "special_tokens_dropped": 5,
+    "patch_grid_before_pool": [
+      14,
+      14
+    ],
+    "patch_pool": [
+      2,
+      2
+    ],
+    "patch_tokens_after_pool": [
+      49,
+      384
+    ],
+    "live_cached_features_forbidden": true,
+    "float32_evaluation": true
+  },
+  "frozen_training_config_sha256": "76680BCE45A67D5D91F42660D5EC25F90450B281838CE311E329477C4E36F09E",
+  "control": {
+    "frequency_hz": 10.0,
+    "context_k": 8,
+    "horizon_h": 8,
+    "execute_horizon_index": 0,
+    "max_linear_velocity_mps": 0.1,
+    "max_angular_velocity_radps": 0.5,
+    "max_linear_acceleration_mps2": 0.5,
+    "max_angular_acceleration_radps2": 1.0,
+    "fresh_context_or_command_wall_timeout_ms": 250,
+    "stop_bypasses_slew_limit": true
+  },
+  "association": {
+    "anchor": "newest_unused_rgb_not_after_control_tick",
+    "future_message_wait_allowed": false,
+    "scan_max_absolute_delta_ms": 75,
+    "scan_tie_break": [
+      "earlier_header_time",
+      "arrival_sequence"
+    ],
+    "odometry_latest_not_after_rgb_max_age_ms": 100,
+    "goal_latest_not_after_rgb_max_age_ms": 150,
+    "invalid_input_action": "CLEAR_FULL_HISTORY_AND_COMMAND_ZERO",
+    "clock_regression_action": "CLEAR_ALL_BUFFERS_HISTORY_AND_COMMAND_ZERO",
+    "warmup_valid_contexts_before_first_inference": 8
+  },
+  "uncertainty": {
+    "aleatoric_definition": "mean(exp(clip(log_variance,-5,2)))_over_Hx2",
+    "mahalanobis_feature": "current_origin_frame_splus_pooler_output_384",
+    "validation_reference_count": 9459,
+    "cdf": "right_continuous_count_reference_lte_value_div_9459",
+    "combined": "max(z_a,z_m)",
+    "comparison": "strict_score_gt_threshold",
+    "active_gate": "combined",
+    "active_threshold_all_12": 1.0,
+    "active_intervention_action": "COMMAND_ZERO_AND_TERMINATE",
+    "aleatoric_and_mahalanobis_flags": "COUNTERFACTUAL_LOG_ONLY"
+  },
+  "termination": {
+    "success_goal_distance_m_lte": 0.25,
+    "success_consecutive_10hz_samples": 3,
+    "collision_radius_m": 0.105,
+    "privileged_ground_truth_policy_input_forbidden": true,
+    "terminal_reason_precedence": [
+      "collision",
+      "uncertainty_intervention",
+      "success",
+      "scientific_timeout",
+      "operational_failure"
+    ]
+  },
+  "benchmark": {
+    "reference_route": "exact_pytorch_cpu_float32",
+    "minimum_timed_iterations": 200,
+    "complete_path_p99_requirement_ms": 100.0,
+    "optional_route": "onnx_directml_rx_5500m",
+    "directml_parity_minimum_frames": 32,
+    "directml_parity_sources": "train_val_and_excluded_development_only",
+    "directml_patch_max_abs_error": 0.0001,
+    "directml_pooled_max_abs_error": 0.0001,
+    "directml_patch_one_minus_cosine_max": 1e-05,
+    "directml_pooled_one_minus_cosine_max": 1e-05,
+    "directml_downstream_first_action_max_abs_error": 1e-05,
+    "all_samples_all_requirements_must_pass": true,
+    "heldout_or_confirmatory_route_selection_forbidden": true
+  },
+  "resume": {
+    "accepted_scientific_outcome_rerun_allowed": false,
+    "infrastructure_failure_same_identity_retry_allowed": true,
+    "preserve_all_attempts": true,
+    "scientific_aggregate_visible_before_complete_seal": false
+  },
+  "readiness": {
+    "official_backbone_locally_verified": false,
+    "runtime_route_frozen": false,
+    "twelve_checkpoint_handoff_verified": false,
+    "recorded_input_gate_passed": false,
+    "development_gazebo_gate_passed": false,
+    "runtime_bundle_independently_audited": false,
+    "explicit_user_approval_recorded": false,
+    "constant_arm_unit_test_passed": false
+  },
+  "reference_arms": {
+    "constant_training_mean": {
+      "kind": "open_loop_constant_no_sensing_no_checkpoint",
+      "is_learned_variant": false,
+      "source": "preregistered trivial baseline, heldout evaluation amendment section 3",
+      "action_linear_x_mps": 0.047447296062892504,
+      "action_angular_z_radps": -0.005205255475722954,
+      "action_linear_x_float64_hex": "0x1.84b0311bf5c89p-5",
+      "action_angular_z_float64_hex": "-0x1.5521b2091a221p-8",
+      "training_rows_used_for_constant": 56128,
+      "training_episodes_used_for_constant": 120,
+      "recompute_or_retune_forbidden": true,
+      "seed_replication": false,
+      "episodes": 80,
+      "rollouts": 80,
+      "consumes_camera": false,
+      "consumes_lidar": false,
+      "consumes_odometry": false,
+      "consumes_goal": false,
+      "loads_backbone": false,
+      "loads_checkpoint": false,
+      "uncertainty_scores": "NOT_APPLICABLE",
+      "excluded_from_intervention_denominators": true,
+      "supervisor_pipeline": "IDENTICAL_TO_LEARNED_ARMS",
+      "reporting": "SECONDARY_EXPLICITLY_LABELLED_NOT_PRIMARY_CLAIM_CRITERIA",
+      "pooling_into_learned_variant_means_forbidden": true,
+      "zero_command_contexts_before_first_proposal": 7,
+      "first_proposal_on_accepted_context": 8,
+      "reset_rule": "IDENTICAL_TO_SECTION_3_LEARNED_ARMS",
+      "reserved_identity_seed": 0,
+      "proposal_transport_dtype": "float32_same_as_learned_arms",
+      "node_executable": "livifuser_sim_eval/constant_arm_runner",
+      "separate_node_from_learned_runner": true
+    },
+    "repeat_last_action": {
+      "status": "CONSIDERED_AND_REJECTED_2026-08-25",
+      "reason": "structurally uninformative closed loop: episodes start at rest and the first eight valid contexts command zero, so an arm whose output depends only on its own previous command has zero as a fixed point and returns 0 successes, 0 collisions, and 80 scientific timeouts by construction",
+      "offline_analogue_differs": "the offline repeat-last baseline repeats the privileged expert's previous recorded action, which no causally admissible closed-loop policy can read"
+    }
+  }
+}

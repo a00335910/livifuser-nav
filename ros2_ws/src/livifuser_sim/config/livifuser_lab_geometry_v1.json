@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "source": "LiViFuser analytic simulation LiDAR; not a Gazebo GPU sensor",
+  "laser": {
+    "beam_count": 400,
+    "angle_min_rad": 0.0,
+    "angle_max_rad": 6.283185307179586,
+    "scan_time_sec": 0.1,
+    "range_min_m": 0.12,
+    "range_max_m": 8.0,
+    "frame_id": "base_scan"
+  },
+  "obstacles": [
+    {
+      "name": "left_wall",
+      "type": "box",
+      "center_xy_m": [2.0, 1.55],
+      "size_xy_m": [8.0, 0.1],
+      "yaw_rad": 0.0
+    },
+    {
+      "name": "right_wall",
+      "type": "box",
+      "center_xy_m": [2.0, -1.55],
+      "size_xy_m": [8.0, 0.1],
+      "yaw_rad": 0.0
+    },
+    {
+      "name": "obstacle_left",
+      "type": "box",
+      "center_xy_m": [1.45, 0.3],
+      "size_xy_m": [0.45, 0.45],
+      "yaw_rad": 0.12
+    },
+    {
+      "name": "obstacle_right",
+      "type": "circle",
+      "center_xy_m": [2.65, -0.32],
+      "radius_m": 0.25
+    }
+  ]
+}

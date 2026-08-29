@@ -1,0 +1,15 @@
+{
+  "collision": false,
+  "context_sequence": 38,
+  "ground_truth_clearance_m": NaN,
+  "ground_truth_goal_distance_m": NaN,
+  "priority_reason": "watchdog_timeout",
+  "schema_version": "1.1.0",
+  "seed": 20260805,
+  "stretched_interval_count": 0,
+  "success": false,
+  "terminal": true,
+  "terminal_reason": "watchdog_timeout",
+  "uncertainty_intervention": false,
+  "variant": "rgb_only"
+}

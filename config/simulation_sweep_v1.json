@@ -1,0 +1,50 @@
+{
+  "sweep_id": "confirmatory_v3_simulation_train_val_v1",
+  "preregistration": "docs/experiments/PREREGISTRATION_SIM_SENSOR_FAILURE_V1.md",
+  "execution_amendment": "docs/experiments/PREREGISTRATION_SIM_TRAINING_EXECUTION_AMENDMENT_2026-08-23.md",
+  "execution_freeze": {
+    "status": "frozen",
+    "optimizer_steps_started": 0,
+    "approval_record": "User explicitly approved the proposed execution amendment as written on 2026-08-23 before any optimizer step."
+  },
+  "seed_note": "Frozen inheritance of the three previously frozen pilot training seeds; every seed result will be reported individually.",
+  "seeds": [20260805, 20260806, 20260807],
+  "runs": [
+    {"name": "full", "variant": "full", "loss": "heteroscedastic"},
+    {"name": "lidar_only", "variant": "lidar_only", "loss": "heteroscedastic"},
+    {"name": "rgb_only", "variant": "rgb_only", "loss": "heteroscedastic"},
+    {"name": "concat", "variant": "concat", "loss": "heteroscedastic"},
+    {"name": "no_fov_mask", "variant": "no_fov_mask", "loss": "heteroscedastic"},
+    {"name": "no_gate", "variant": "no_gate", "loss": "heteroscedastic"},
+    {"name": "no_temporal", "variant": "no_temporal", "loss": "heteroscedastic"},
+    {"name": "full_mean_only", "variant": "full", "loss": "mean_only"}
+  ],
+  "context_k": 8,
+  "horizon_h": 8,
+  "lidar_sectors": 80,
+  "lidar_range_clip_m": 10.0,
+  "visual_mask_radius_tokens": 1,
+  "batch_size": 16,
+  "warmup_steps": 24750,
+  "nll_steps": 8250,
+  "warmup_learning_rate": 0.001,
+  "nll_learning_rate": 0.00025,
+  "lr_schedule": "cosine_per_phase",
+  "lr_floor_fraction": 0.05,
+  "weight_decay": 0.0,
+  "gradient_clip_norm": 1.0,
+  "torch_threads": 6,
+  "eval_batch_size": 64,
+  "log_every_steps": 100,
+  "mahalanobis_shrinkage": 0.1,
+  "loss_note": "mean_only uses the mean loss for all 33000 steps so every run receives the same optimization budget; its NLL reflects an untrained variance head.",
+  "backbone": {
+    "status": "locked_final_backbone",
+    "architecture": "DINOv3 ViT-S+/16",
+    "cache_schema_version": "2.1.0",
+    "cache_name": "livifuser_dinov3_vits16plus_train_val_cache_v2",
+    "backbone_contract_sha256": "2957C78346DE608067DD5AC14D5C3E2F23438CD2BB3B1ECA847F898EBA68894A",
+    "preprocessing_id": "full_fov_letterbox_320x240_to_224x224_imagenet_pillow_bicubic_v1"
+  },
+  "disposition": "Frozen simulation train/validation sweep; train C0 only, validation C0 only, held-out test_id/test_ood excluded from training, fitting, selection, and thresholding."
+}

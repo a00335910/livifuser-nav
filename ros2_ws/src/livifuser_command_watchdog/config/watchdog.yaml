@@ -1,0 +1,13 @@
+livifuser_command_watchdog:
+  ros__parameters:
+    rate_hz: 10.0
+    intent_timeout_ms: 250.0
+    max_abs_linear_mps: 0.10
+    max_abs_angular_radps: 0.50
+    frame_id: base_link
+    # Discovery is queried only on this timer, never on the command path, because
+    # a blocking query there delays the next tick as well as the current one.
+    graph_probe_hz: 1.0
+    # Output is forced to zero while the cached publisher picture is missing or
+    # older than this, including at startup before the first successful probe.
+    graph_max_age_ms: 3000.0

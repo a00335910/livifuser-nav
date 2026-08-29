@@ -1,0 +1,64 @@
+# LiViFuser-Nav v1.1 Stage 1 recording contract.
+# Topic names are defaults; confirm them against `ros2 topic list` on the robot.
+recording:
+  target_rate_hz: 10.0
+  storage_id: mcap
+  output_root: bags
+  topics:
+    rgb: /camera/image_raw
+    camera_info: /camera/camera_info
+    lidar: /scan
+    action: /cmd_vel
+    stamped_action: /livifuser/cmd_vel_stamped
+    teleop_intent: /livifuser/teleop_intent_stamped
+    command_watchdog_status: /livifuser/command_watchdog_status
+    odometry: /odom
+    goal_relative: /livifuser/goal_relative
+    transforms: /tf
+    static_transforms: /tf_static
+
+association:
+  reference_topic: /camera/image_raw
+  lidar_strategy: nearest_timestamp
+  # Measured on the pilot LDS-03 at 10.06 Hz on 2026-07-28.
+  max_lidar_delta_ms: 75
+
+observed_hardware:
+  profile: tb3_burger_lds03_rpi_camera_v3
+  measured_on: 2026-07-29
+  lidar_rate_hz: 10.06
+  camera_rate_hz: 30.0
+  camera_capture_size: [320, 240]
+  camera_encoding: bgra8
+  camera_calibrated: true
+
+sample_contract:
+  rgb_capture_size: [320, 240]
+  rgb_train_size: [224, 224]
+  goal_order: [rho_m, sin_alpha, cos_alpha]
+  robot_state_order: [linear_velocity_mps, angular_velocity_radps]
+  action_order: [linear_velocity_mps, angular_velocity_radps]
+  timestamp_unit: nanoseconds
+
+latency_budget_ms:
+  hard_total: 100.0
+  target_total: 80.0
+  stages:
+    capture_and_transport: 20.0
+    preprocess: 10.0
+    vision_and_fusion_inference: 45.0
+    safety_filter: 5.0
+    command_publish: 5.0
+
+split_policy:
+  unit: physical_environment
+  random_frame_split_allowed: false
+
+# Stage 1 acquisition watchdog. This bridges stamped operator intent to the
+# TurtleBot command topic; it is not the final uncertainty/collision supervisor.
+command_watchdog:
+  rate_hz: 10.0
+  intent_timeout_ms: 250.0
+  max_abs_linear_mps: 0.10
+  max_abs_angular_radps: 0.50
+  frame_id: base_link

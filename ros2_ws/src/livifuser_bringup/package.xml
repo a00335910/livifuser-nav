@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>livifuser_bringup</name>
+  <version>0.1.0</version>
+  <description>Stage 1 recording and bringup for LiViFuser-Nav.</description>
+  <maintainer email="maintainer@example.com">LiViFuser-Nav Team</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>livifuser_command_watchdog</exec_depend>
+  <exec_depend>rosbag2</exec_depend>
+  <exec_depend>rosbag2_storage_mcap</exec_depend>
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>camera_calibration</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

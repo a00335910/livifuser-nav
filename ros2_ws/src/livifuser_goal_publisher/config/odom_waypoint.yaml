@@ -1,0 +1,10 @@
+odom_waypoint_goal_publisher:
+  ros__parameters:
+    # Resolve this body-frame offset once from the first valid odometry pose.
+    # Restart the node at the marked start pose for every episode.
+    forward_m: 3.0
+    left_m: 0.0
+    rate_hz: 10.0
+    odom_timeout_ms: 250.0
+    odom_frame_id: odom
+    goal_frame_id: base_link

@@ -1,0 +1,15 @@
+{
+  "collision": false,
+  "context_sequence": 1067,
+  "ground_truth_clearance_m": 0.21279292180472958,
+  "ground_truth_goal_distance_m": 0.29010698199418616,
+  "priority_reason": "scientific_timeout",
+  "schema_version": "1.1.0",
+  "seed": 20260806,
+  "stretched_interval_count": 0,
+  "success": false,
+  "terminal": true,
+  "terminal_reason": "scientific_timeout",
+  "uncertainty_intervention": false,
+  "variant": "lidar_only"
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FROZEN_AFTER_PARITY_PASS_BEFORE_FIRST_DIRECTML_TIMING",
+  "purpose": "select_parity_qualified_rx5500m_directml_runtime_route",
+  "onnx_sha256": "C4AE34E008FD216E652665BB4CC6AB1C26784320BD5C7136F0436CA8331A8BEE",
+  "onnx_size_bytes": 115038013,
+  "parity_report_sha256": "E55E3B8136930FC7F00B7F52A8CD73C86FF952B7EBBB7B7F4FB3EBC2B4AE3E5E",
+  "parity_report_self_sha256": "E1031823B4AEE6A0F81CCB19064BB8D567BEC32547F16D73ECE0A445285EC18E",
+  "parity_config_sha256": "DFA5F69EACEB8AB1BAD7EA4B366A0AB2B908066734010E38C37514879D336EA2",
+  "source_config_sha256": "C3A1DB45A92C47A8FE4C09A32F829BA93807831A521B67E1494549C9C5A06F6E",
+  "policy_payload_sha256": "3A989EADD0DB8D995993D2042124E34C2C51FAAFC1A9C74EC60106E8A182C162",
+  "route": {
+    "backbone": "onnxruntime_directml_1.24.4",
+    "provider": "DmlExecutionProvider",
+    "device_id": 1,
+    "device_identity": "Radeon RX 5500M",
+    "execution_mode": "ORT_SEQUENTIAL",
+    "enable_mem_pattern": false,
+    "policy": "exact_pytorch_cpu_float32",
+    "policy_intraop_threads": 6,
+    "policy_interop_threads": 1,
+    "autocast": false
+  },
+  "benchmark": {
+    "variants": ["full", "lidar_only", "concat", "rgb_only"],
+    "seed": 20260805,
+    "warmup_complete_path_iterations": 12,
+    "timed_iterations_per_variant": 200,
+    "deadline_ms": 100.0,
+    "source_order": "same_frozen_cpu_benchmark_sources_and_order",
+    "acceptance": "all_four_complete_path_p99_below_deadline_and_zero_missed_deadlines"
+  },
+  "route_selection": {
+    "directml_requires_parity_pass": true,
+    "directml_requires_timing_acceptance": true,
+    "otherwise": "exact_pytorch_cpu_float32_fallback_with_slower_execution_schedule"
+  },
+  "heldout_or_confirmatory_inputs_forbidden": true
+}

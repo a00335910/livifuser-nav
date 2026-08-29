@@ -1,0 +1,12 @@
+livifuser_release_keyboard:
+  ros__parameters:
+    rate_hz: 10.0
+    linear_mps: 0.08
+    angular_radps: 0.40
+    frame_id: base_link
+    max_runtime_s: 90.0
+    # Cold robot bringup and DDS discovery can exceed the warm-graph time.
+    graph_ready_timeout_s: 45.0
+    episode_state_timeout_ms: 350.0
+    # Supply the exact episode ID on the command line for every final run.
+    episode_id: ""

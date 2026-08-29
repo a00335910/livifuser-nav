@@ -1,0 +1,15 @@
+# Measure this rigid transform on the assembled robot.
+# Convention: parent lidar frame -> child optical camera frame, SI units.
+parent_frame: base_scan
+child_frame: camera_optical_frame
+translation_m:
+  x: null
+  y: null
+  z: null
+rotation_quaternion_xyzw:
+  x: null
+  y: null
+  z: null
+  w: null
+measurement_notes: "Record method, date, robot identifier, and residual error here."
+

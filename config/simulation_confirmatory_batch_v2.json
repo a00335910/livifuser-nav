@@ -1,0 +1,65 @@
+{
+  "schema_version": "2.0.0",
+  "name": "livifuser_sim_confirmatory_recollection_v2",
+  "freeze_manifest": "docs/experiments/PREREGISTRATION_RECOLLECTION_FREEZE_SIM_V2.json",
+  "base_freeze_commit": "1b0b6e64f318748cd6f1de4024865fbebdeb2932",
+  "amendments": [
+    {
+      "number": 1,
+      "path": "docs/experiments/PREREGISTRATION_SIM_SENSOR_FAILURE_AMENDMENT_1.json",
+      "sha256": "1E35131E5DA8898A3D26EFA63A4C77AF081FCC26A6CFA0FA34DD5A62B3B5AECC"
+    },
+    {
+      "number": 2,
+      "path": "docs/experiments/PREREGISTRATION_SIM_SENSOR_FAILURE_AMENDMENT_2.json",
+      "sha256": "1A5DC781D84BD684FA6D3D9D1137550629848304CFDD692A78A379BAD1017610"
+    },
+    {
+      "number": 3,
+      "path": "docs/experiments/PREREGISTRATION_SIM_SENSOR_FAILURE_AMENDMENT_3.json",
+      "sha256": "3D0A5AB89A884D80823F0A4F06F0F1FE69A13A9D02B43812E919A687CB4FD1F8"
+    }
+  ],
+  "output_root": "artifacts/simulation/confirmatory_v2",
+  "forbidden_predecessor_root": "artifacts/simulation/confirmatory_v1",
+  "wsl_distribution": "Ubuntu-TB3",
+  "scientific_simulated_deadline_sec": 120.0,
+  "operational_wall_watchdog_sec": 240.0,
+  "minimum_free_gib_before_run": 150.0,
+  "groups": {
+    "train": {"worlds": 6, "episodes_per_world": 20, "conditions": ["C0"]},
+    "val_id": {"worlds": 2, "episodes_per_world": 15, "conditions": ["C0"]},
+    "test_id": {"worlds": 2, "episodes_per_world": 15, "conditions": ["C0"]},
+    "test_ood": {
+      "worlds": 2,
+      "source_group": "test_id",
+      "episodes_per_world": 10,
+      "conditions": ["C0", "C1", "C3", "C4"]
+    }
+  },
+  "condition_implementation": {
+    "C0": {"world_variant": "C0", "lidar_condition": "C0"},
+    "C1": {"world_variant": "C1", "lidar_condition": "C0"},
+    "C3": {"world_variant": "C0", "lidar_condition": "C3b"},
+    "C4": {"world_variant": "C4", "lidar_condition": "C0"}
+  },
+  "observation_seed_blocks": {
+    "train": 61000000,
+    "val_id": 62000000,
+    "test_id": 63000000,
+    "test_ood": 64000000
+  },
+  "observation_seed_world_stride": 1000,
+  "topics": [
+    "/camera/image_raw",
+    "/camera/camera_info",
+    "/scan",
+    "/odom",
+    "/livifuser/sim/ground_truth/odom",
+    "/livifuser/goal_relative",
+    "/livifuser/cmd_vel_stamped",
+    "/tf",
+    "/tf_static",
+    "/clock"
+  ]
+}

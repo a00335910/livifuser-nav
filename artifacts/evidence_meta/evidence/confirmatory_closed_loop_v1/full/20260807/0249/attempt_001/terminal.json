@@ -1,0 +1,15 @@
+{
+  "collision": false,
+  "context_sequence": 1074,
+  "ground_truth_clearance_m": 0.36726558534906356,
+  "ground_truth_goal_distance_m": 0.30463913345383853,
+  "priority_reason": "scientific_timeout",
+  "schema_version": "1.1.0",
+  "seed": 20260807,
+  "stretched_interval_count": 0,
+  "success": false,
+  "terminal": true,
+  "terminal_reason": "scientific_timeout",
+  "uncertainty_intervention": false,
+  "variant": "full"
+}

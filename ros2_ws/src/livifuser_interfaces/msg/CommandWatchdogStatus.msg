@@ -1,0 +1,11 @@
+std_msgs/Header header
+
+string reason
+bool intent_present
+bool clamped
+float32 intent_age_s
+float32 requested_linear_mps
+float32 requested_angular_radps
+float32 output_linear_mps
+float32 output_angular_radps
+uint32 external_cmd_vel_publishers

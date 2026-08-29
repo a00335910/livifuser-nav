@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<sdf version="1.8">
+  <world name="livifuser_lab">
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="ignition-gazebo-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="ignition-gazebo-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="ignition-gazebo-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre</render_engine>
+    </plugin>
+
+    <scene>
+      <ambient>0.55 0.55 0.55 1</ambient>
+      <background>0.20 0.24 0.30 1</background>
+      <shadows>true</shadows>
+    </scene>
+    <light type="directional" name="sun">
+      <pose>0 0 8 0 0 0</pose>
+      <diffuse>0.9 0.9 0.9 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.4 0.2 -0.9</direction>
+    </light>
+
+    <model name="ground">
+      <static>true</static>
+      <link name="ground_link">
+        <collision name="collision">
+          <geometry><box><size>10 6 0.10</size></box></geometry>
+          <pose>2 0 -0.05 0 0 0</pose>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10 6 0.10</size></box></geometry>
+          <pose>2 0 -0.05 0 0 0</pose>
+          <material><ambient>0.55 0.55 0.52 1</ambient><diffuse>0.62 0.62 0.58 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="left_wall">
+      <static>true</static><pose>2 1.55 0.5 0 0 0</pose>
+      <link name="link"><collision name="collision"><geometry><box><size>8 0.10 1</size></box></geometry></collision>
+      <visual name="visual"><geometry><box><size>8 0.10 1</size></box></geometry><material><ambient>0.55 0.68 0.82 1</ambient><diffuse>0.55 0.68 0.82 1</diffuse></material></visual></link>
+    </model>
+    <model name="right_wall">
+      <static>true</static><pose>2 -1.55 0.5 0 0 0</pose>
+      <link name="link"><collision name="collision"><geometry><box><size>8 0.10 1</size></box></geometry></collision>
+      <visual name="visual"><geometry><box><size>8 0.10 1</size></box></geometry><material><ambient>0.82 0.68 0.55 1</ambient><diffuse>0.82 0.68 0.55 1</diffuse></material></visual></link>
+    </model>
+    <model name="obstacle_left">
+      <static>true</static><pose>1.45 0.30 0.30 0 0 0.12</pose>
+      <link name="link"><collision name="collision"><geometry><box><size>0.45 0.45 0.60</size></box></geometry></collision>
+      <visual name="visual"><geometry><box><size>0.45 0.45 0.60</size></box></geometry><material><ambient>0.85 0.18 0.12 1</ambient><diffuse>0.85 0.18 0.12 1</diffuse></material></visual></link>
+    </model>
+    <model name="obstacle_right">
+      <static>true</static><pose>2.65 -0.32 0.35 0 0 -0.10</pose>
+      <link name="link"><collision name="collision"><geometry><cylinder><radius>0.25</radius><length>0.70</length></cylinder></geometry></collision>
+      <visual name="visual"><geometry><cylinder><radius>0.25</radius><length>0.70</length></cylinder></geometry><material><ambient>0.12 0.65 0.22 1</ambient><diffuse>0.12 0.65 0.22 1</diffuse></material></visual></link>
+    </model>
+
+    <model name="livifuser_burger">
+      <pose>0 0 0.002 0 0 0</pose>
+      <link name="base_link">
+        <inertial>
+          <!-- Official TurtleBot3 Burger URDF fixed-joint lump, converted by
+               sdformat.  The old 1 kg mass at z=0.075 m sat on the front edge
+               of the support polygon and let the robot tip onto its nose. -->
+          <pose>-0.00429009175 0 0.0307338557 0 0 0</pose>
+          <mass>0.94473504</mass>
+          <inertia>
+            <ixx>0.00717896283</ixx><ixy>-0.000012294101</ixy><ixz>0.000576740468</ixz>
+            <iyy>0.00721804469</iyy><iyz>-0.0000050120904</iyz><izz>0.00413858036</izz>
+          </inertia>
+        </inertial>
+        <collision name="body_collision">
+          <pose>-0.032 0 0.080 0 0 0</pose>
+          <geometry><box><size>0.140 0.140 0.143</size></box></geometry>
+        </collision>
+        <collision name="caster_back_collision">
+          <pose>-0.081 0 0.005 -1.5707963268 0 0</pose>
+          <geometry><box><size>0.030 0.009 0.020</size></box></geometry>
+          <surface><friction><ode><mu>0.01</mu><mu2>0.01</mu2></ode></friction></surface>
+        </collision>
+        <visual name="body_visual">
+          <pose>-0.032 0 0.080 0 0 0</pose>
+          <geometry><box><size>0.140 0.140 0.143</size></box></geometry>
+          <material><ambient>0.10 0.12 0.16 1</ambient><diffuse>0.10 0.12 0.16 1</diffuse></material>
+        </visual>
+        <sensor name="rpi_camera_v3" type="camera">
+          <pose>0.0723955522 0.0048472604 0.088102685 0.0516921310 0.0054365470 -0.0292993679</pose>
+          <topic>camera</topic><update_rate>30</update_rate><always_on>true</always_on><visualize>false</visualize>
+          <camera>
+            <horizontal_fov>0.911759</horizontal_fov>
+            <image><width>320</width><height>240</height><format>R8G8B8</format></image>
+            <clip><near>0.05</near><far>20.0</far></clip>
+            <lens><intrinsics><fx>316.21156</fx><fy>315.64970</fy><cx>223.13834</cx><cy>107.39364</cy><s>0</s></intrinsics></lens>
+            <distortion><k1>0.012344</k1><k2>0.038138</k2><k3>0.0</k3><p1>-0.016819</p1><p2>0.004823</p2><center>0.6973073125 0.4474735</center></distortion>
+          </camera>
+        </sensor>
+      </link>
+
+      <link name="left_wheel">
+        <!-- The wheel geometry follows the Burger dimensions.  The joint axis
+             below is sign-adjusted for Fortress DiffDrive so a positive
+             command produces positive body-X travel. -->
+        <pose relative_to="left_wheel_joint">0 0 0 0 0 0</pose>
+        <inertial><mass>0.02849894</mass><inertia><ixx>0.00001117558</ixx><iyy>0.000011192413</iyy><izz>0.000020712558</izz></inertia></inertial>
+        <collision name="collision"><geometry><cylinder><radius>0.033</radius><length>0.018</length></cylinder></geometry><surface><friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.033</radius><length>0.018</length></cylinder></geometry><material><ambient>0.03 0.03 0.03 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+      </link>
+      <link name="right_wheel">
+        <pose relative_to="right_wheel_joint">0 0 0 0 0 0</pose>
+        <inertial><mass>0.02849894</mass><inertia><ixx>0.00001117558</ixx><iyy>0.000011192413</iyy><izz>0.000020712558</izz></inertia></inertial>
+        <collision name="collision"><geometry><cylinder><radius>0.033</radius><length>0.018</length></cylinder></geometry><surface><friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction></surface></collision>
+        <visual name="visual"><geometry><cylinder><radius>0.033</radius><length>0.018</length></cylinder></geometry><material><ambient>0.03 0.03 0.03 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+      </link>
+      <joint name="left_wheel_joint" type="revolute"><pose relative_to="base_link">0 0.080 0.033 1.5707963268 0 0</pose><parent>base_link</parent><child>left_wheel</child><axis><xyz>0 0 -1</xyz></axis></joint>
+      <joint name="right_wheel_joint" type="revolute"><pose relative_to="base_link">0 -0.080 0.033 1.5707963268 0 0</pose><parent>base_link</parent><child>right_wheel</child><axis><xyz>0 0 -1</xyz></axis></joint>
+
+      <plugin filename="ignition-gazebo-diff-drive-system" name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint><right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.160</wheel_separation><wheel_radius>0.033</wheel_radius>
+        <odom_publish_frequency>20</odom_publish_frequency>
+        <max_linear_acceleration>0.08</max_linear_acceleration><min_linear_acceleration>-0.08</min_linear_acceleration>
+        <max_angular_acceleration>0.40</max_angular_acceleration><min_angular_acceleration>-0.40</min_angular_acceleration>
+        <max_linear_velocity>0.22</max_linear_velocity><min_linear_velocity>-0.22</min_linear_velocity>
+        <max_angular_velocity>2.84</max_angular_velocity><min_angular_velocity>-2.84</min_angular_velocity>
+      </plugin>
+    </model>
+  </world>
+</sdf>

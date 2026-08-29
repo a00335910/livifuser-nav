@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "bundle": {
+    "path": "D:\\LiViFuser\\artifacts\\livifuser_sim_heldout_evaluation_v1_bundle.zip",
+    "size_bytes": 163135634,
+    "sha256": "EC4736E677D7365461FE1C1F9C607A699D36E1AC9624F8B89D46D864DB8C75C6",
+    "member_count": 29,
+    "manifest_file_sha256": "69801277F2DC63468C2691D63D5618AB13AF593B2D9EF9570CA1C239C8EE7A96",
+    "manifest_self_sha256": "A853AF0A8352AB54DE8D7429688F8C3E9ABAB262179197AECF9FD00EA2C244D5",
+    "zip_crc": "PASS",
+    "deterministic_metadata": true,
+    "all_member_hashes_verified": true
+  },
+  "upstream": {
+    "all_local_hashes_verified": true,
+    "heldout_data_plan_reconstructed": true,
+    "heldout_cache_transport_rehashed": true,
+    "heldout_cache_manifest_and_completion_verified": true,
+    "backbone_contract_verified": true
+  },
+  "payload": {
+    "episodes": 110,
+    "windows": 34503,
+    "groups": {
+      "test_id:C0": {
+        "episodes": 30,
+        "windows": 9368
+      },
+      "test_ood:C0": {
+        "episodes": 20,
+        "windows": 6272
+      },
+      "test_ood:C1": {
+        "episodes": 20,
+        "windows": 6265
+      },
+      "test_ood:C3b": {
+        "episodes": 20,
+        "windows": 6177
+      },
+      "test_ood:C4": {
+        "episodes": 20,
+        "windows": 6421
+      }
+    },
+    "prediction_records": 24,
+    "heteroscedastic_records": 21,
+    "closed_loop_threshold_records": 12,
+    "trivial_baselines": 2,
+    "all_npz_pickle_free": true,
+    "all_arrays_finite": true,
+    "all_raw_metrics_recomputed": true,
+    "maximum_absolute_reproduction_difference": 7.105427357601002e-15,
+    "summary_exactly_reproduced": true,
+    "bootstrap_records_reproduced": 45
+  }
+}

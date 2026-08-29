@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "cleared_utc": "2026-08-26T09:31:10Z",
+  "attempts_at_clearance": 3,
+  "failure_reason": "the episode script exited 2 at the 'no free X display number' guard before any simulator started; only scope.json was written, so no rollout was attempted",
+  "root_cause": "the process-group teardown kills Xvfb with SIGKILL, so Xvfb never removes its own /tmp/.X<n>-lock. The display scan treated any existing lock as an occupied slot, so the 110 slots in the 90-199 range filled with debris at one per episode. The batch completed 107 identities across 112 launches and then exhausted the range; every subsequent episode failed identically at the guard. Verified at diagnosis: 110/110 locks present, zero Xvfb processes alive, every lock naming a dead pid",
+  "resolution": "the scan now reclaims a lock whose pid no longer exists (and one whose contents are unreadable), removing the stale lock and its socket before use, and the teardown removes the episode's own lock so debris stops accruing. Episodes run sequentially, so reclamation has no live claimant to race. tests/test_xvfb_display_lifecycle.sh pins both halves, including that a lock held by a live process is skipped rather than stolen",
+  "scientific_inputs_changed": false,
+  "changed": [
+    "scripts/run_live_sim_development_episode.sh: stale X display lock reclamation and teardown cleanup"
+  ],
+  "unchanged": [
+    "world", "start", "goal", "episode index", "observation seed", "condition",
+    "policy checkpoint", "thresholds", "scientific deadline", "success rule",
+    "termination precedence", "rollout counts", "render path"
+  ],
+  "failed_attempts_preserved": true,
+  "note": "no rollout ran in any of the three attempts, so no scientific outcome was discarded"
+}

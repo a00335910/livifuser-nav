@@ -1,0 +1,24 @@
+{
+  "experiment_id": "tiny_overfit_05_06_v1",
+  "seed": 20260730,
+  "context_k": 8,
+  "horizon_h": 8,
+  "lidar_sectors": 80,
+  "lidar_range_clip_m": 10.0,
+  "visual_mask_radius_tokens": 1,
+  "windows_per_action_class_per_run": 2,
+  "action_classes": ["zero", "straight", "left", "right"],
+  "warmup_steps": 150,
+  "nll_steps": 100,
+  "warmup_learning_rate": 0.002,
+  "nll_learning_rate": 0.0005,
+  "weight_decay": 0.0,
+  "gradient_clip_norm": 1.0,
+  "torch_threads": 6,
+  "temporary_backbone": {
+    "artifact": "D:\\dinov3_onnx\\dinov3_small_224.onnx",
+    "architecture": "DINOv3 ViT-S/16",
+    "frozen": true,
+    "locked_final_deviation": "Temporary pipeline baseline only; Architecture v1.1 requires frozen DINOv3 ViT-S+/16. Never relabel this artifact as S+/16."
+  }
+}

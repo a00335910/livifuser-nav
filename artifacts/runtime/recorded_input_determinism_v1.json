@@ -1,0 +1,126 @@
+{
+  "deterministic": true,
+  "device": "cuda:0",
+  "forbidden_inputs_used": {
+    "confirmatory": false,
+    "heldout": false
+  },
+  "gate": "closed_loop_amendment_section_12_gate_5",
+  "identities": [
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260805,
+      "variant": "full"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260806,
+      "variant": "full"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260807,
+      "variant": "full"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260805,
+      "variant": "lidar_only"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260806,
+      "variant": "lidar_only"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260807,
+      "variant": "lidar_only"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260805,
+      "variant": "concat"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260806,
+      "variant": "concat"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260807,
+      "variant": "concat"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260805,
+      "variant": "rgb_only"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260806,
+      "variant": "rgb_only"
+    },
+    {
+      "deterministic": true,
+      "differences": [],
+      "frames": 32,
+      "inference_ready_frames": 25,
+      "seed": 20260807,
+      "variant": "rgb_only"
+    }
+  ],
+  "inputs": {
+    "backbone_bundle_sha256": "0F9F7CB99A955AE0B817762CC08565F0D3BD820CDD1692D71DC6B05E2CD9E9F3",
+    "bundle_sha256": "DDDF7FBC6D12A19A3A98C18DB482EEE14952DD84440C71532244EE542DFBB936",
+    "code_sha256": "2BF157FBF3C97468D622F0094708C545AD9B90D5EF7B6B60FB8C81DF8ECC0360",
+    "parity_manifest_self_sha256": "1849EC269AC6D111A33738B4D4B12004977C5075FE566C4349053BF9C671BC93",
+    "policy_payload_sha256": "3A989EADD0DB8D995993D2042124E34C2C51FAAFC1A9C74EC60106E8A182C162"
+  },
+  "passes_per_identity": 2,
+  "policy_identities": 12,
+  "recorded_frames": 32,
+  "report_sha256_excludes_self": "871DC71895C2EEFD8D7E77F500FD1D064C70FC71BF25BB354D57E40F1E6EFB98",
+  "schema_version": "1.0.0",
+  "scope": "excluded_development_recorded_input_determinism_only",
+  "software": {
+    "numpy": "2.0.2",
+    "torch": "2.10.0+cu128",
+    "transformers": "4.56.0"
+  },
+  "status": "complete"
+}

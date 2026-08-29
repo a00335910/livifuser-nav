@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<sdf version="1.8">
+  <model name="livifuser_visual_skin_v1"><static>true</static></model>
+</sdf>

@@ -1,0 +1,15 @@
+{
+  "collision": true,
+  "context_sequence": 803,
+  "ground_truth_clearance_m": 0.10441144715276134,
+  "ground_truth_goal_distance_m": 1.7367412681308019,
+  "priority_reason": "collision",
+  "schema_version": "1.1.0",
+  "seed": 20260807,
+  "stretched_interval_count": 0,
+  "success": false,
+  "terminal": true,
+  "terminal_reason": "collision",
+  "uncertainty_intervention": false,
+  "variant": "rgb_only"
+}

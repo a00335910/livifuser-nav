@@ -1,0 +1,69 @@
+{
+  "schema_version": 2,
+  "name": "livifuser_lab",
+  "source": "Layered view of livifuser_lab_geometry_v1.json; analytic simulation LiDAR, not a Gazebo GPU sensor. Obstacle geometry is pinned identical to the v1 contract, which in turn is pinned to worlds/livifuser_lab.sdf. The development lab world contains no LiDAR-invisible obstacle, so every obstacle belongs to every layer; C4 worlds come from the procedural generator.",
+  "laser": {
+    "beam_count": 400,
+    "angle_min_rad": 0.0,
+    "angle_max_rad": 6.283185307179586,
+    "scan_time_sec": 0.1,
+    "range_min_m": 0.12,
+    "range_max_m": 8.0,
+    "frame_id": "base_scan"
+  },
+  "bounds_min_xy_m": [-2.0, -2.0],
+  "bounds_max_xy_m": [6.0, 2.0],
+  "obstacles": [
+    {
+      "name": "left_wall",
+      "type": "box",
+      "center_xy_m": [2.0, 1.55],
+      "size_xy_m": [8.0, 0.1],
+      "yaw_rad": 0.0,
+      "layers": {
+        "collision": true,
+        "expert": true,
+        "camera": true,
+        "lidar": true
+      }
+    },
+    {
+      "name": "right_wall",
+      "type": "box",
+      "center_xy_m": [2.0, -1.55],
+      "size_xy_m": [8.0, 0.1],
+      "yaw_rad": 0.0,
+      "layers": {
+        "collision": true,
+        "expert": true,
+        "camera": true,
+        "lidar": true
+      }
+    },
+    {
+      "name": "obstacle_left",
+      "type": "box",
+      "center_xy_m": [1.45, 0.3],
+      "size_xy_m": [0.45, 0.45],
+      "yaw_rad": 0.12,
+      "layers": {
+        "collision": true,
+        "expert": true,
+        "camera": true,
+        "lidar": true
+      }
+    },
+    {
+      "name": "obstacle_right",
+      "type": "circle",
+      "center_xy_m": [2.65, -0.32],
+      "radius_m": 0.25,
+      "layers": {
+        "collision": true,
+        "expert": true,
+        "camera": true,
+        "lidar": true
+      }
+    }
+  ]
+}

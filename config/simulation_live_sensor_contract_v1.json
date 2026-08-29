@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FROZEN_FROM_ACCEPTED_TRAINING_EXPORT_CONTRACT",
+  "source_identities": {
+    "intrinsics_path": "config/calibration/rpi_camera_v3_320x240_2026-07-29.yaml",
+    "intrinsics_sha256": "239A589D1EDBECDAFD5D793EBB624846DF28AABBB7B3FD4B039E8CFAF0BFDB85",
+    "extrinsics_path": "config/calibration/lidar_camera_extrinsics_2026-07-29.yaml",
+    "extrinsics_sha256": "35691176B5B8E267DCE581657BEDE011B87CB66CB3D7467739104FB9334A4079",
+    "reference_export_manifest": "artifacts/simulation/confirmatory_v3/episodes/test_id_straight_corridor_000_c0_e000_s73000000/attempt_001/export/manifest.json",
+    "reference_export_manifest_sha256_excludes_self": "A80E17AF3AFC928C4EAE69B699EDAC7706B8A25DA6118C9061F47366EBFFAD06"
+  },
+  "image_contract": {
+    "topic": "/camera/image_raw",
+    "width": 320,
+    "height": 240,
+    "encoding": "rgb8",
+    "frame_id": "camera"
+  },
+  "camera_info_contract": {
+    "topic": "/camera/camera_info",
+    "width": 320,
+    "height": 240,
+    "distortion_model": "plumb_bob",
+    "frame_id": "camera",
+    "k_absolute_tolerance": 1e-6,
+    "d_absolute_tolerance": 1e-6
+  },
+  "scan_contract": {
+    "topic": "/scan",
+    "frame_id": "base_scan",
+    "minimum_beam_count": 80,
+    "angle_min_rad": 0.0,
+    "angle_max_rad": 6.2831854820251465,
+    "range_min_m": 0.11999999731779099,
+    "range_max_m": 8.0
+  },
+  "calibration": {
+    "recorded_camera_info": {
+      "width": 320,
+      "height": 240,
+      "distortion_model": "plumb_bob",
+      "k": [
+        316.21156,
+        0.0,
+        223.13834,
+        0.0,
+        315.6497,
+        107.39364,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "d": [0.012344, 0.038138, -0.016819, 0.004823, 0.0],
+      "frame_id": "camera"
+    },
+    "static_transforms": {
+      "base_link->base_scan": {
+        "translation": [0.0, 0.0, 0.172],
+        "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]
+      },
+      "base_scan->camera": {
+        "translation": [0.0723955522, 0.0048472604, -0.083897315],
+        "quaternion_xyzw": [
+          -0.4806489642,
+          0.5212435451,
+          -0.4930249275,
+          0.5041905996
+        ]
+      },
+      "camera->camera_optical_frame": {
+        "translation": [0.0, 0.0, 0.0],
+        "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]
+      }
+    },
+    "lidar_geometry": {
+      "angular_frame": {
+        "angle_min_rad": 0.0,
+        "angle_max_rad": 6.2831854820251465,
+        "range_min_m": 0.11999999731779099,
+        "range_max_m": 8.0
+      }
+    }
+  },
+  "tokenizer": {
+    "sectors": 80,
+    "range_clip_m": 10.0,
+    "visual_radius": 1
+  }
+}

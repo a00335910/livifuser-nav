@@ -1,0 +1,38 @@
+{
+  "experiment_id": "tiny_overfit_05_06_v2",
+  "supersedes": "tiny_overfit_05_06_v1",
+  "change_rationale": "v1 held both phases at a constant learning rate for 250 steps. Its mean-MSE phase plateaued near 0.06 normalized MSE and oscillated, so it demonstrated a trainable path but not memorization. v2 changes only the schedule and its length: cosine decay within each phase, 2000 mean-MSE steps and 500 heteroscedastic steps. The model, losses, subset, and seed are unchanged.",
+  "criteria_provenance": "The acceptance thresholds below were fixed after the v1 under-fit and two scratch convergence probes (800 and 2500 steps), before this configuration was run. They are recorded here rather than reconstructed afterwards, but they are not blind to the probe outcomes.",
+  "seed": 20260730,
+  "context_k": 8,
+  "horizon_h": 8,
+  "lidar_sectors": 80,
+  "lidar_range_clip_m": 10.0,
+  "visual_mask_radius_tokens": 1,
+  "windows_per_action_class_per_run": 2,
+  "action_classes": ["zero", "straight", "left", "right"],
+  "warmup_steps": 2000,
+  "nll_steps": 500,
+  "warmup_learning_rate": 0.002,
+  "nll_learning_rate": 0.0005,
+  "lr_schedule": "cosine_per_phase",
+  "lr_floor_fraction": 0.05,
+  "log_every_steps": 25,
+  "weight_decay": 0.0,
+  "gradient_clip_norm": 1.0,
+  "torch_threads": 6,
+  "acceptance": {
+    "min_normalized_mse_reduction_factor": 20.0,
+    "max_mean_phase_normalized_mse": 0.01,
+    "max_window_abs_linear_mps": 0.025,
+    "max_window_abs_angular_radps": 0.125,
+    "max_uncertainty_phase_normalized_mse": 0.05,
+    "note": "The window thresholds are 25 percent of each channel's commanded range. The mean-fit criteria are scored at the end of the mean-MSE phase; the heteroscedastic phase is scored only against the last criterion because it optimizes calibrated variance rather than the mean."
+  },
+  "temporary_backbone": {
+    "artifact": "D:\\dinov3_onnx\\dinov3_small_224.onnx",
+    "architecture": "DINOv3 ViT-S/16",
+    "frozen": true,
+    "locked_final_deviation": "Temporary pipeline baseline only; Architecture v1.1 requires frozen DINOv3 ViT-S+/16. Never relabel this artifact as S+/16."
+  }
+}

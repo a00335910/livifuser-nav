@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "name": "AWS_SMALL_HOUSE_CONTROLLED_SKIN_V1",
+  "source": "https://github.com/aws-robotics/aws-robomaker-small-house-world",
+  "source_revision": "ff9631ca6d1db9c1ba656498151464b5ab74aafe",
+  "source_world_sha256": "8EEF40841C462E3F015DC092F24A1B696EA10F8F05B662B529B76DDD720B544F",
+  "source_license": "MIT",
+  "c1_visual_contract_sha256": "85A0F2A92E8C9382E865A646940D5F7017AEA3EC963A093427F8FD0F03DE4E4E",
+  "group_styles": {
+    "dev": "train_wood_brick",
+    "train": "train_wood_brick",
+    "val_id": "val_amber_plaster",
+    "test_id": "test_navy_wood"
+  },
+  "styles": [
+    "test_navy_wood",
+    "train_wood_brick",
+    "val_amber_plaster"
+  ],
+  "model_uri": "model://livifuser_visual_skin_v1",
+  "mesh_envelopes_m": {
+    "furniture": {
+      "min_xyz": [
+        -0.65073196,
+        -0.32403709,
+        -4e-08
+      ],
+      "max_xyz": [
+        0.66425201,
+        0.33076843,
+        0.32169472
+      ]
+    },
+    "cylinder": {
+      "min_xyz": [
+        -0.142589,
+        -0.141495,
+        0.0
+      ],
+      "max_xyz": [
+        0.142145,
+        0.141495,
+        0.343414
+      ],
+      "radial_extent_m": 0.1428
+    }
+  },
+  "source_asset_sha256": {
+    "aws_robomaker_residential_Board_01/materials/textures/aws_Board_01.png": "795ABD1E5BD2DAD04DC1AC934B33F768DB6A23EAEB6C1E5D4B1B77F3368D454F",
+    "aws_robomaker_residential_Carpet_01/materials/textures/aws_Carpet_01.png": "BEBFA3305FB60E141249299E256B33B021A018F0835D14BC172C3EEE86036F75",
+    "aws_robomaker_residential_CoffeeTable_01/materials/textures/aws_CoffeeTable_01.png": "FC720FE6A63AB4483E668E986E80BC095429EA497BFC3A6CA96B121E52F0DFB2",
+    "aws_robomaker_residential_CoffeeTable_01/meshes/aws_CoffeeTable_01_visual.DAE": "A0FE0D5086613CD02F8F5A4F7B4CEA12717CAE5BEEBCA25E5C9AF850789570B1",
+    "aws_robomaker_residential_FloorB_01/materials/textures/aws_FloorB_01.png": "943CAC901EFDB091DDFB35028CEED2F4E71759EC76F699E11BA448CC1729AC92",
+    "aws_robomaker_residential_HouseWallB_01/materials/textures/aws_HouseWallB_01.png": "9AC538643259E20E8F4DCDCDA8D15A783F093E75FE3DA06B0077F456AD47361E",
+    "aws_robomaker_residential_RoomWall_01/materials/textures/aws_RoomWall_01.png": "1A242B0F680A14381708E8F53F445AECA6A53D8F6CBCE3914F1B0356123741AA",
+    "aws_robomaker_residential_Trash_01/materials/textures/aws_Trash_01.png": "54488551F566900F9279FB2341BCBAD55BB071D153512FEF1D29E27542096506",
+    "aws_robomaker_residential_Trash_01/meshes/aws_Trash_01_visual.DAE": "6234E93167CB4ECD676A8A001B3B86F0E1714D94D4E25DFDB1EF6D48185FF89C"
+  },
+  "generated_asset_sha256": {
+    "LICENSE.aws-small-house": "DDF9B5D9DD2FDED18653E0CA4C5934008D4FAEA1161D754493B54A23C25EAC14",
+    "materials/textures/cylinder_test_navy_wood_c0.png": "A3075B6F771DCAA17DD636807AA2300375AA4BB1FBA44C8B617A8DF4CA3A1461",
+    "materials/textures/cylinder_test_navy_wood_c1.png": "C21F910389263612031A92200A2BD984B07482E335CC404EEF565EFDC1A3E239",
+    "materials/textures/cylinder_train_wood_brick_c0.png": "A01803238CDADA0299015A26113A8AA58D0A411A9B790851BBC8FD2DFDA30980",
+    "materials/textures/cylinder_train_wood_brick_c1.png": "E8151BE613D8328DBD3F5CAA7D61E66747481CACA3B79DEB69D6D09F30AD6FBD",
+    "materials/textures/cylinder_val_amber_plaster_c0.png": "6587E9BBDB470E36D29445051B646C5371A4F7659A4C9BE7D41FD4F9AD5E3DDF",
+    "materials/textures/cylinder_val_amber_plaster_c1.png": "641AF13F769789FE5C38D567B92D025ADEFBDEE8C07BC109B2BA975C4FF3A7EE",
+    "materials/textures/floor_test_navy_wood_c0.png": "2D41C1E0F72DEC75C6E111473301BCB8154F5F38928D2127CF87ADB6E12E854F",
+    "materials/textures/floor_test_navy_wood_c1.png": "DA9526AEAE4BF4B3490CD32C92765210821AA9994EAE062C8CAFE4DC441FEA8F",
+    "materials/textures/floor_train_wood_brick_c0.png": "C7246994E34556FE74FA3DC8182009AEE79869F3984D7B50C5BD4499AEE54644",
+    "materials/textures/floor_train_wood_brick_c1.png": "113E6C2DE89152608DC522462DC029B40D72C979FE93DFF3AA3EC54CABB708A3",
+    "materials/textures/floor_val_amber_plaster_c0.png": "08DCBE48174194D07A5E07C61AFE69EE9AE692FA02C673BFEE8F620673394F5F",
+    "materials/textures/floor_val_amber_plaster_c1.png": "430771834ED4D2D2688EC0597888EAFA5A43A8DD3C11FE82752A2C1C3134DCFF",
+    "materials/textures/furniture_test_navy_wood_c0.png": "B8B656A8CA271AA4B9562ECCD6CEBD99F36389922F9532030FFBF9834F094CAE",
+    "materials/textures/furniture_test_navy_wood_c1.png": "056573F2C178CF68B504E8DD60FD82FA10B69E3796BB1C5590D373BCA0D900BD",
+    "materials/textures/furniture_train_wood_brick_c0.png": "A0AB8B0B5C93C034875B4C6889AA68A3DB49CA0ECA080AAE7E393753C4A073DE",
+    "materials/textures/furniture_train_wood_brick_c1.png": "8D4A05FA82DBCEFF1BBA6B42E1395FD593848970A48C617E8216B63A4347340E",
+    "materials/textures/furniture_val_amber_plaster_c0.png": "08DCBE48174194D07A5E07C61AFE69EE9AE692FA02C673BFEE8F620673394F5F",
+    "materials/textures/furniture_val_amber_plaster_c1.png": "430771834ED4D2D2688EC0597888EAFA5A43A8DD3C11FE82752A2C1C3134DCFF",
+    "materials/textures/hazard_test_navy_wood_c0.png": "E744BEF04223D354CFB10A718A1EEB65CB0BCB5E889556BBDA6421E0D6C03662",
+    "materials/textures/hazard_test_navy_wood_c1.png": "12E5A597C36CBBC0F71A4856CC3B9EE8ED410813A42145A3F3C98DE9D00FEAF9",
+    "materials/textures/hazard_train_wood_brick_c0.png": "E744BEF04223D354CFB10A718A1EEB65CB0BCB5E889556BBDA6421E0D6C03662",
+    "materials/textures/hazard_train_wood_brick_c1.png": "12E5A597C36CBBC0F71A4856CC3B9EE8ED410813A42145A3F3C98DE9D00FEAF9",
+    "materials/textures/hazard_val_amber_plaster_c0.png": "E744BEF04223D354CFB10A718A1EEB65CB0BCB5E889556BBDA6421E0D6C03662",
+    "materials/textures/hazard_val_amber_plaster_c1.png": "12E5A597C36CBBC0F71A4856CC3B9EE8ED410813A42145A3F3C98DE9D00FEAF9",
+    "materials/textures/wall_test_navy_wood_c0.png": "6AF1C46389A6DB1B111BC312F12072CB19A1B81E785F01B75858AB0593AA7945",
+    "materials/textures/wall_test_navy_wood_c1.png": "7053A073B817ED8560E60C71984BEC1306D00B1B24193CA23CC340CD993A5408",
+    "materials/textures/wall_train_wood_brick_c0.png": "9F680EBCDAB817B6A68A222DFC2E0C133CECF5380960FBAF778F2C52B4068D0E",
+    "materials/textures/wall_train_wood_brick_c1.png": "7835A58E92CACB439A50977AAF5798CA0D3AD9D7AC8B017C2D147510CDD40975",
+    "materials/textures/wall_val_amber_plaster_c0.png": "EFB8AB0A9B0E06BB6DA304FBFDD424FF0FE258999E71705D284FAFC864DC7A3A",
+    "materials/textures/wall_val_amber_plaster_c1.png": "30DDC8B9703D95ACE6B216713B28E284FB70D49F02FAC5E15D857F80440B4BB9",
+    "meshes/cylinder_test_navy_wood_c0.dae": "F7278EAD583A01684DC880BE2D26F377E3BB600CB6B918C50194D4BB10A935F7",
+    "meshes/cylinder_test_navy_wood_c1.dae": "1B7BCB31CA0C05781FC4651FA319F5A342433FDB1C1034DD57B859D65C2F8FAB",
+    "meshes/cylinder_train_wood_brick_c0.dae": "48924A8657587C1D98BDE991541828E44D5F36B4EDCA2DB3AE51B83A8D52188B",
+    "meshes/cylinder_train_wood_brick_c1.dae": "B4A2B9529E521BFEED7D991EAD6B4E7F3A7FA2CA3B7E93C20B9A46BB3B13D45A",
+    "meshes/cylinder_val_amber_plaster_c0.dae": "6FFC09C2DE2FBB7B95B23E667C0EADCC08A2A8AF259616456607492897611E76",
+    "meshes/cylinder_val_amber_plaster_c1.dae": "44DAD4BB592C152385104D684013AE15F0F44665A4E0A00DC8CAA11592FA37E1",
+    "meshes/floor_box_test_navy_wood_c0.mtl": "CDC49674DFFF89008402EF38981248EA4269D1D0BDC4748C0FCA89D9D5E85C4A",
+    "meshes/floor_box_test_navy_wood_c0.obj": "BAB1FE5D914C79CE48BF68998D164A67EB5F1F9D823295F98482B9457B7D7693",
+    "meshes/floor_box_test_navy_wood_c1.mtl": "70C1AF1923F71A56843C826DDCFD42BD5A697C562A259767891FAE3E24C1E14A",
+    "meshes/floor_box_test_navy_wood_c1.obj": "1E99136E0614087AA09BC3EC7FA210840F7F48C71AEFB0C83ABCCA2C5A623534",
+    "meshes/floor_box_train_wood_brick_c0.mtl": "2E8E28B4A68822BCAAFFAEA8E78B036760A2A03378AE7AAE1C7AFA78D7DD29C8",
+    "meshes/floor_box_train_wood_brick_c0.obj": "8D19803C70B99E723433111EEB215862425B0E5FF87AC9E7870CD1A10614DAAF",
+    "meshes/floor_box_train_wood_brick_c1.mtl": "37744F916688CF67A155CD731FDB137AFFBDD963DECF996862163D9C892ED101",
+    "meshes/floor_box_train_wood_brick_c1.obj": "A3E456E59B43BD75DF82811C7BAFE8350820628B55F5E67ED24C36DE46DCA1BF",
+    "meshes/floor_box_val_amber_plaster_c0.mtl": "20D24166E8D9DCEAC54668464D2C6F25ED9595D73F61BFD7DF9EE0CD68BD4802",
+    "meshes/floor_box_val_amber_plaster_c0.obj": "F3887D45F3B67AC93C6CF0C5171D10655323BCCFA68DE5E8486C1C7CEA370D24",
+    "meshes/floor_box_val_amber_plaster_c1.mtl": "320E39389460D9890FE58BD34BA1621E14E42E5E5D4767B30D83C51AF85EB250",
+    "meshes/floor_box_val_amber_plaster_c1.obj": "3D9E705192A5F6A5593ACCE928C72CD4CACD0572EBD9B4A0FAA39BFE0A5A2149",
+    "meshes/furniture_test_navy_wood_c0.dae": "28DF6FF50B994B41669C165BD0D6B8C34AB121AC18FCE09296EF393198C3C214",
+    "meshes/furniture_test_navy_wood_c1.dae": "2B349176BC212FEDB6D9BB118CEAA519853C05F6B5D4C3C9DFE403AD229AC8B7",
+    "meshes/furniture_train_wood_brick_c0.dae": "083BBDDBF42A1E67F261FD4D9B54371BD470A3511176E50003DDD5EE11B05710",
+    "meshes/furniture_train_wood_brick_c1.dae": "581D93FF3FB7A1289652539D9DC7DDC2A7B09D437A63C300BF78A71262549F47",
+    "meshes/furniture_val_amber_plaster_c0.dae": "C819A094C8476DFB64214C7115001F7F5EB3B647AA8239F6F81CD60D75655C0B",
+    "meshes/furniture_val_amber_plaster_c1.dae": "B6844D8A0EDBA9DC368D3D75972BB2EF8BD2547F045B4FBBAABD35C55BADD921",
+    "meshes/hazard_box_test_navy_wood_c0.mtl": "5EC52170CA2D980F957EEE068726561565535283C9FEAEFF2CD8338EDF5AF7CD",
+    "meshes/hazard_box_test_navy_wood_c0.obj": "1210A6815C52917C70864FBCBB89904F629433AC0C4FF2B095D413BC22BFE2C3",
+    "meshes/hazard_box_test_navy_wood_c1.mtl": "B2347A9777BE7A583F95E77397762E37BB00604E41B5BF0A8612575EA6F48FCC",
+    "meshes/hazard_box_test_navy_wood_c1.obj": "549148A9AFE6200AF2E38F6E9A4D0921A142A37FE54725159B5C04757A2E455E",
+    "meshes/hazard_box_train_wood_brick_c0.mtl": "5DDD6E9405A8A5EA41DB6C56F743497DB6A4FD31E0541CFE31F0A204BA8AFBDA",
+    "meshes/hazard_box_train_wood_brick_c0.obj": "DF5331DAE6B417BA097EF685772A3D6705800AF4013A062536E3435140BEE262",
+    "meshes/hazard_box_train_wood_brick_c1.mtl": "A469A6B7EA856182B23582B40DF461586FC1026AA148ECE78C659C1DB48EC111",
+    "meshes/hazard_box_train_wood_brick_c1.obj": "64561A74B7E22EC2B887EC4562E009AB371D729F0DCBC65068788A116D2461D8",
+    "meshes/hazard_box_val_amber_plaster_c0.mtl": "E680F4C4C2E55AC2AEFE420944990F4D4C2DE9BF811CC338FF4E86ED0681636B",
+    "meshes/hazard_box_val_amber_plaster_c0.obj": "680460B11B28F971B4C6F78DA8FEF865AA31AA2F8A34E13D19B36605A8E2A1A5",
+    "meshes/hazard_box_val_amber_plaster_c1.mtl": "12AA7FFAC41CD5BB93508F523AE3819F4A9A1F5B05E46E1588E243ED0FE93668",
+    "meshes/hazard_box_val_amber_plaster_c1.obj": "32328AA905C75D09AC119E2F323D76C66B069B90B4F4B832DAB1BCD48E53FF9E",
+    "meshes/hazard_cylinder_test_navy_wood_c0.mtl": "5EC52170CA2D980F957EEE068726561565535283C9FEAEFF2CD8338EDF5AF7CD",
+    "meshes/hazard_cylinder_test_navy_wood_c0.obj": "D68597B6DFB435DFAA317D645CC77061823C8F3348E0E2CEC0E43C635F08CE10",
+    "meshes/hazard_cylinder_test_navy_wood_c1.mtl": "B2347A9777BE7A583F95E77397762E37BB00604E41B5BF0A8612575EA6F48FCC",
+    "meshes/hazard_cylinder_test_navy_wood_c1.obj": "B21E7C96B7C7BB9E76EC9E3B290434D3A69C40574916BC947EE92BAB5B75ABF3",
+    "meshes/hazard_cylinder_train_wood_brick_c0.mtl": "5DDD6E9405A8A5EA41DB6C56F743497DB6A4FD31E0541CFE31F0A204BA8AFBDA",
+    "meshes/hazard_cylinder_train_wood_brick_c0.obj": "A0F7ADD96692DD129F344129C4BEC0165052E31A25829FE1C06056B4B287F1E3",
+    "meshes/hazard_cylinder_train_wood_brick_c1.mtl": "A469A6B7EA856182B23582B40DF461586FC1026AA148ECE78C659C1DB48EC111",
+    "meshes/hazard_cylinder_train_wood_brick_c1.obj": "8FBDD4E6E467EEF3E82EE5AFCBA4EEC652AE3454F0AB9DD2FEEC1E06AAD607B7",
+    "meshes/hazard_cylinder_val_amber_plaster_c0.mtl": "E680F4C4C2E55AC2AEFE420944990F4D4C2DE9BF811CC338FF4E86ED0681636B",
+    "meshes/hazard_cylinder_val_amber_plaster_c0.obj": "D92E907565F59C44DB185D760EE82857F3DF6EAC8B5A6494A2955E5F86CD73A9",
+    "meshes/hazard_cylinder_val_amber_plaster_c1.mtl": "12AA7FFAC41CD5BB93508F523AE3819F4A9A1F5B05E46E1588E243ED0FE93668",
+    "meshes/hazard_cylinder_val_amber_plaster_c1.obj": "0ECDD8E3094455545FA6D4C51E21B8B2DAB0F0863913BA5C7AE681263FE4B960",
+    "meshes/wall_box_test_navy_wood_c0.mtl": "E5687F87C8EAC59D21D79055623BB20A56CA97163BDA28CD2D8AD97BE17F316E",
+    "meshes/wall_box_test_navy_wood_c0.obj": "F023F1185559B7B72481881E34A8DC7A0951D87169F6E51EEC295DB8D0E790E7",
+    "meshes/wall_box_test_navy_wood_c1.mtl": "051070BD96550D18C5DC71ECA0393E1F239748EA0DDB985112558AE10E76C3AB",
+    "meshes/wall_box_test_navy_wood_c1.obj": "EC665895C8B528B5789FBDB69BCFD4EEF5FB3DECA72BF41DC0E2CA4451C681D3",
+    "meshes/wall_box_train_wood_brick_c0.mtl": "0DF21121043A8CCBE147A597B5006F686593B718CFED9DD38E70EF4D3C0EB3A0",
+    "meshes/wall_box_train_wood_brick_c0.obj": "4E5D489962CA92372229BE23793329DB1A79CD970395F38CF256D942124E558E",
+    "meshes/wall_box_train_wood_brick_c1.mtl": "BB1326CF868B712D3CC5D28D903581024D83AA920A1A83A94269FA0355D9A5A2",
+    "meshes/wall_box_train_wood_brick_c1.obj": "2123D81D95FB54D2097A88AE5A27745E7D4C9FFC4DD32BB4C33892BB728182F8",
+    "meshes/wall_box_val_amber_plaster_c0.mtl": "DBAB0A6F2390B1F245ECD19F9451DF369F41B148A89F13B17699E123B4D83050",
+    "meshes/wall_box_val_amber_plaster_c0.obj": "710A427555633350547D36860C87A8B3771D34194776A870C63D378A2C793145",
+    "meshes/wall_box_val_amber_plaster_c1.mtl": "754FC36AC4224FFCE771CF6D4FFE0B4C575E3674C14696542FD4DBEFD67D9CC2",
+    "meshes/wall_box_val_amber_plaster_c1.obj": "90FB3C823A2E407C5C43DD6B4FE991C6721BC5E7005F3DBAF4D0B1F92D730841",
+    "model.config": "52F9874D7810AE8CE58A697F44D562E254233EDFC04ED7BDCCA18F7FA85F05C5",
+    "model.sdf": "20D240D6194B48824200C11E77FE59BD5290773BAB13C1D0BD5444A501C2A9D1"
+  },
+  "normalized_mesh_geometry_sha256": {
+    "meshes/cylinder_test_navy_wood_c0.dae": "28C99C0C0DA9A39185922C7603F37BCC7DA273B9C9AB5E7786DC11B0D8CBD138",
+    "meshes/cylinder_test_navy_wood_c1.dae": "28C99C0C0DA9A39185922C7603F37BCC7DA273B9C9AB5E7786DC11B0D8CBD138",
+    "meshes/cylinder_train_wood_brick_c0.dae": "28C99C0C0DA9A39185922C7603F37BCC7DA273B9C9AB5E7786DC11B0D8CBD138",
+    "meshes/cylinder_train_wood_brick_c1.dae": "28C99C0C0DA9A39185922C7603F37BCC7DA273B9C9AB5E7786DC11B0D8CBD138",
+    "meshes/cylinder_val_amber_plaster_c0.dae": "28C99C0C0DA9A39185922C7603F37BCC7DA273B9C9AB5E7786DC11B0D8CBD138",
+    "meshes/cylinder_val_amber_plaster_c1.dae": "28C99C0C0DA9A39185922C7603F37BCC7DA273B9C9AB5E7786DC11B0D8CBD138",
+    "meshes/floor_box_test_navy_wood_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/floor_box_test_navy_wood_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/floor_box_train_wood_brick_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/floor_box_train_wood_brick_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/floor_box_val_amber_plaster_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/floor_box_val_amber_plaster_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/furniture_test_navy_wood_c0.dae": "4BA6AFA5D758297B73527F58D8E3DFAB71049569122A294117DFFD84A1A8BEFF",
+    "meshes/furniture_test_navy_wood_c1.dae": "4BA6AFA5D758297B73527F58D8E3DFAB71049569122A294117DFFD84A1A8BEFF",
+    "meshes/furniture_train_wood_brick_c0.dae": "4BA6AFA5D758297B73527F58D8E3DFAB71049569122A294117DFFD84A1A8BEFF",
+    "meshes/furniture_train_wood_brick_c1.dae": "4BA6AFA5D758297B73527F58D8E3DFAB71049569122A294117DFFD84A1A8BEFF",
+    "meshes/furniture_val_amber_plaster_c0.dae": "4BA6AFA5D758297B73527F58D8E3DFAB71049569122A294117DFFD84A1A8BEFF",
+    "meshes/furniture_val_amber_plaster_c1.dae": "4BA6AFA5D758297B73527F58D8E3DFAB71049569122A294117DFFD84A1A8BEFF",
+    "meshes/hazard_box_test_navy_wood_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/hazard_box_test_navy_wood_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/hazard_box_train_wood_brick_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/hazard_box_train_wood_brick_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/hazard_box_val_amber_plaster_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/hazard_box_val_amber_plaster_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/hazard_cylinder_test_navy_wood_c0.obj": "B49D7CC6461FF79EA62C672DE7A060DC61FBC2A743FA61B100A5A31116340B9E",
+    "meshes/hazard_cylinder_test_navy_wood_c1.obj": "B49D7CC6461FF79EA62C672DE7A060DC61FBC2A743FA61B100A5A31116340B9E",
+    "meshes/hazard_cylinder_train_wood_brick_c0.obj": "B49D7CC6461FF79EA62C672DE7A060DC61FBC2A743FA61B100A5A31116340B9E",
+    "meshes/hazard_cylinder_train_wood_brick_c1.obj": "B49D7CC6461FF79EA62C672DE7A060DC61FBC2A743FA61B100A5A31116340B9E",
+    "meshes/hazard_cylinder_val_amber_plaster_c0.obj": "B49D7CC6461FF79EA62C672DE7A060DC61FBC2A743FA61B100A5A31116340B9E",
+    "meshes/hazard_cylinder_val_amber_plaster_c1.obj": "B49D7CC6461FF79EA62C672DE7A060DC61FBC2A743FA61B100A5A31116340B9E",
+    "meshes/wall_box_test_navy_wood_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/wall_box_test_navy_wood_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/wall_box_train_wood_brick_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/wall_box_train_wood_brick_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/wall_box_val_amber_plaster_c0.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1",
+    "meshes/wall_box_val_amber_plaster_c1.obj": "0B22CD68D8162AEE069A798348068B3D07CF470DA9D868904608B44BF8CA1DB1"
+  },
+  "appearance_statistics": {
+    "train_wood_brick": {
+      "floor": {
+        "c0_mean_rgb": [
+          0.809574,
+          0.749424,
+          0.592401
+        ],
+        "c0_luminance_std": 0.041405
+      },
+      "wall": {
+        "c0_mean_rgb": [
+          0.793549,
+          0.787909,
+          0.772481
+        ],
+        "c0_luminance_std": 0.111278
+      },
+      "furniture": {
+        "c0_mean_rgb": [
+          0.850362,
+          0.625016,
+          0.400928
+        ],
+        "c0_luminance_std": 0.0238
+      },
+      "cylinder": {
+        "c0_mean_rgb": [
+          0.919383,
+          0.984176,
+          0.98008
+        ],
+        "c0_luminance_std": 0.077619
+      },
+      "hazard": {
+        "c0_mean_rgb": [
+          0.513275,
+          0.424902,
+          0.13764
+        ],
+        "c0_luminance_std": 0.318288
+      }
+    },
+    "val_amber_plaster": {
+      "floor": {
+        "c0_mean_rgb": [
+          0.782574,
+          0.613191,
+          0.400928
+        ],
+        "c0_luminance_std": 0.023392
+      },
+      "wall": {
+        "c0_mean_rgb": [
+          0.866466,
+          0.946559,
+          0.955721
+        ],
+        "c0_luminance_std": 0.002056
+      },
+      "furniture": {
+        "c0_mean_rgb": [
+          0.782574,
+          0.613191,
+          0.400928
+        ],
+        "c0_luminance_std": 0.023392
+      },
+      "cylinder": {
+        "c0_mean_rgb": [
+          0.845367,
+          0.959944,
+          0.98008
+        ],
+        "c0_luminance_std": 0.075365
+      },
+      "hazard": {
+        "c0_mean_rgb": [
+          0.513275,
+          0.424902,
+          0.13764
+        ],
+        "c0_luminance_std": 0.318288
+      }
+    },
+    "test_navy_wood": {
+      "floor": {
+        "c0_mean_rgb": [
+          0.413705,
+          0.445399,
+          0.47451
+        ],
+        "c0_luminance_std": 0.0734
+      },
+      "wall": {
+        "c0_mean_rgb": [
+          0.462743,
+          0.297112,
+          0.165166
+        ],
+        "c0_luminance_std": 0.012745
+      },
+      "furniture": {
+        "c0_mean_rgb": [
+          0.697071,
+          0.575027,
+          0.400928
+        ],
+        "c0_luminance_std": 0.021981
+      },
+      "cylinder": {
+        "c0_mean_rgb": [
+          0.754566,
+          0.901701,
+          0.98008
+        ],
+        "c0_luminance_std": 0.070594
+      },
+      "hazard": {
+        "c0_mean_rgb": [
+          0.513275,
+          0.424902,
+          0.13764
+        ],
+        "c0_luminance_std": 0.318288
+      }
+    }
+  },
+  "c4_visibility_gate": {
+    "minimum_hazard_to_floor_mean_rgb_distance": 0.2,
+    "observed_minimum_mean_rgb_distance": 0.351875,
+    "minimum_hazard_luminance_std": 0.2,
+    "observed_minimum_hazard_luminance_std": 0.318288
+  },
+  "geometry_contract": {
+    "imported_collision": "forbidden",
+    "mesh_visuals": "must remain within authoritative collision envelope",
+    "wall_skin": "partition of the authoritative wall box",
+    "c0_c4_visuals": "byte-identical",
+    "c1_geometry": "normalized mesh geometry unchanged; texture binding only"
+  }
+}

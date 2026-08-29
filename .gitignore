@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.uv-cache/
+.venv/
+
+# ROS 2 / colcon
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+# colcon invoked from the repository root writes these here instead
+build/
+install/
+log/
+
+# Recordings and learned artifacts. Roughly 200 GB of bags, simulation
+# episodes, feature caches and checkpoints live outside this repository and are
+# identified by SHA-256 instead. The small evidence records under artifacts/
+# that the reported numbers resolve to are already tracked, so this rule does
+# not remove them; it stops anything large being added by accident.
+bags/
+datasets/
+checkpoints/
+artifacts/
+*.db3
+*.mcap
+
+# Calibration outputs can contain machine-specific paths
+config/calibration/*.generated.yaml
+
+# Private working notes, agent instruction files and internal documentation,
+# all deliberately unpublished.
+docs/
+CLAUDE.md
+AGENTS.md
+network_run_commands.txt
+
+# Separate artifacts that are not part of this system.
+paper/
+report/
+
+# Personal documents. Never commit these.
+*_CV.pdf
+*_CV.docx
+Muzaddid*.pdf
+Muzaddid*.docx
+Interim_Report*.docx
+FinalReportGuidelines.pdf
+additonalinformation.txt
+
+# Editors / OS
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "cleared_utc": "2026-08-25T23:03:31Z",
+  "attempts_at_clearance": 3,
+  "failure_reason": "wait_sim_terminal.py ran under the system Python 3.12 instead of the runtime virtualenv 3.10, so rclpy's C extension was absent (ModuleNotFoundError: rclpy._rclpy_pybind11) and every attempt died about fifteen seconds after launch",
+  "root_cause": "the episode script invoked bare 'python', resolving the interpreter from PATH. Identity 180 succeeded because it was launched from a script that activated the virtualenv; the detached batch invokes the virtualenv interpreter directly without activating, so PATH still pointed at the system Python",
+  "resolution": "the episode script now resolves the interpreter explicitly (LIVIFUSER_PYTHON, then the runtime virtualenv, then python3) and asserts it can import rclpy immediately after both ROS setups are sourced, so a wrong interpreter fails in one second rather than after a launch",
+  "scientific_inputs_changed": false,
+  "changed": [
+    "scripts/run_live_sim_development_episode.sh: explicit interpreter resolution and an rclpy assertion"
+  ],
+  "unchanged": [
+    "world", "start", "goal", "episode index", "observation seed", "condition",
+    "policy checkpoint", "thresholds", "scientific deadline", "success rule",
+    "termination precedence", "rollout counts"
+  ],
+  "failed_attempts_preserved": true
+}

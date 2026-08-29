@@ -1,0 +1,73 @@
+camera_intrinsics: config/calibration/rpi_camera_v3_320x240_2026-07-29.yaml
+checkerboard:
+  columns: 8
+  rows: 6
+  square_size_m: 0.025
+
+# Angles use the normalized LDS-03 convention: zero is forward and positive is left.
+# Each interval selects only the planar checkerboard/cardboard face, excluding box sides.
+poses:
+  - name: pose_01
+    path: artifacts/extrinsic/pose_01
+    split: train
+    lidar_angle_intervals_deg: [[-3.6, 23.5]]
+  - name: pose_02
+    path: artifacts/extrinsic/pose_02
+    split: train
+    lidar_angle_intervals_deg: [[12.6, 28.8]]
+  - name: pose_03
+    path: artifacts/extrinsic/pose_03
+    split: validation
+    lidar_angle_intervals_deg: [[-15.3, -1.8]]
+  - name: pose_04_retry
+    path: artifacts/extrinsic/pose_04_retry
+    split: train
+    lidar_angle_intervals_deg: [[0.0, 30.6]]
+  - name: pose_05
+    path: artifacts/extrinsic/pose_05
+    split: train
+    lidar_angle_intervals_deg: [[0.0, 22.4]]
+  - name: pose_06_retry
+    path: artifacts/extrinsic/pose_06_retry
+    split: train
+    lidar_angle_intervals_deg: [[-9.0, 15.3]]
+  - name: pose_07
+    path: artifacts/extrinsic/pose_07
+    split: validation
+    lidar_angle_intervals_deg: [[-9.0, 12.5]]
+  - name: pose_08_retry
+    path: artifacts/extrinsic/pose_08_retry
+    split: train
+    lidar_angle_intervals_deg: [[-4.5, 8.1]]
+  - name: pose_09
+    path: artifacts/extrinsic/pose_09
+    split: train
+    lidar_angle_intervals_deg: [[-1.8, 9.9]]
+  - name: pose_10
+    path: artifacts/extrinsic/pose_10
+    split: validation
+    lidar_angle_intervals_deg: [[-5.4, 9.0]]
+  - name: pose_11
+    path: artifacts/extrinsic/pose_11
+    split: train
+    lidar_angle_intervals_deg: [[-12.6, 7.2]]
+  - name: pose_12
+    path: artifacts/extrinsic/pose_12
+    split: train
+    lidar_angle_intervals_deg: [[-2.7, 15.3]]
+  - name: pose_13_retry
+    path: artifacts/extrinsic/pose_13_retry
+    split: train
+    lidar_angle_intervals_deg: [[-2.7, 18.0]]
+  - name: pose_14
+    path: artifacts/extrinsic/pose_14
+    split: train
+    lidar_angle_intervals_deg: [[-8.1, 14.4]]
+  - name: pose_15_retry
+    path: artifacts/extrinsic/pose_15_retry
+    split: validation
+    lidar_angle_intervals_deg: [[-4.5, 13.5]]
+  - name: pose_16
+    path: artifacts/extrinsic/pose_16
+    split: validation
+    lidar_angle_intervals_deg: [[-11.7, 7.2]]

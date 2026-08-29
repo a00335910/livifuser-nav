@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "cleared_utc": "2026-08-27T04:55:29Z",
+  "attempts_at_clearance": 3,
+  "failure_reason": "all three attempts terminated with terminal_reason watchdog_timeout and NaN ground-truth goal distance and clearance. watchdog_timeout is an operational classification, so no scientific outcome was produced or discarded. Each attempt ran a real rollout: the policy verified its identity, passed calibration, and reached tick 200 or beyond before the command watchdog fired",
+  "root_cause": "not fully determined. watchdog_timeout is a known intermittent operational failure across this batch: 22 of 542 terminal records, about 4 percent, distributed across blocks rather than trending upward (0, 6, 9, 0, 3, 4 per 100 records). Three consecutive occurrences on one identity is far less likely than that base rate alone predicts, so an identity-specific contribution cannot be ruled out. Two candidates were examined and rejected: the SIGSEGV exits at teardown are normal here (neighbouring episodes with four segfaults each completed with accepted scientific outcomes), and memory, GPU and /dev/shm were all clear. One real resource leak was found and cleared: 6,116 stale /tmp/launch_params_* files left behind by ros2 launch, one per node per episode",
+  "resolution": "the stale /tmp/launch_params_* files were removed, and the identity is released for a fourth attempt. If it fails again the batch will pause again on the same identity, which distinguishes an identity-specific defect from the background intermittent rate. No scientific input was altered and the retry ceiling was not raised",
+  "scientific_inputs_changed": false,
+  "changed": [
+    "removed stale /tmp/launch_params_* files (infrastructure debris, not evidence)",
+    "scripts/run_live_sim_development_episode.sh: remove this episode's launch parameter files during teardown"
+  ],
+  "unchanged": [
+    "world", "start", "goal", "episode index", "observation seed", "condition",
+    "policy checkpoint", "thresholds", "scientific deadline", "success rule",
+    "termination precedence", "rollout counts", "render path"
+  ],
+  "failed_attempts_preserved": true,
+  "note": "cause not conclusively identified; this is recorded honestly rather than attributed to the leak that was cleaned at the same time"
+}

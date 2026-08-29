@@ -1,0 +1,55 @@
+status: accepted
+measurement_date: 2026-07-29
+parent_frame: base_scan
+child_frame: camera_optical_frame
+
+# ROS TF convention: pose of camera_optical_frame expressed in base_scan.
+translation_m:
+  x: 0.0723955522
+  y: 0.0048472604
+  z: -0.0838973150
+rotation_quaternion_xyzw:
+  x: -0.4806489642
+  y: 0.5212435451
+  z: -0.4930249275
+  w: 0.5041905996
+
+# Projection convention used by LiViFuser: p_camera = R * p_lidar + t.
+camera_from_lidar:
+  rotation_matrix:
+    - [-0.0295368249, -0.9982274078, -0.0516683497]
+    - [-0.0039132725, 0.0518059882, -0.9986495010]
+    - [0.9995560326, -0.0292947431, -0.0054365203]
+  translation_m: [0.0026421672, -0.0837518253, -0.0726775211]
+
+runtime_frame_bridge:
+  camera_driver_frame: camera
+  camera_driver_coordinates_are_optical: true
+  publish_measured_transform_as: base_scan_to_camera
+  publish_identity_alias: camera_to_camera_optical_frame
+
+measurement:
+  method: checkerboard-plane PnP plus 2D LiDAR point-to-plane robust least squares
+  checkerboard_internal_corners: [8, 6]
+  square_size_m: 0.025
+  camera_resolution: [320, 240]
+  pose_selection: config/calibration/lidar_camera_pose_selection_2026-07-29.yaml
+  solver: scripts/solve_lidar_camera_extrinsics.py
+  result: artifacts/extrinsic/final_candidate_solve_2026-07-29/result.json
+  excluded_pose: pose_06_retry
+  exclusion_reason: LiDAR return landed on the cardboard top/front seam
+  accepted_pose_count: 15
+  all_pose_rmse_m: 0.0046431095
+  all_pose_median_abs_m: 0.0030925311
+  all_pose_p95_abs_m: 0.0095132249
+  all_pose_max_abs_m: 0.0124237408
+  held_out_rmse_m: 0.0046320004
+  held_out_p95_abs_m: 0.0073974004
+  held_out_max_abs_m: 0.0080743224
+  leave_one_out_rmse_m: 0.00608
+  jacobian_condition_number: 32.68
+
+notes:
+  - Static target captures remain valid despite variable camera-scan timestamp offsets.
+  - Recalibrate if either sensor or its mount moves.
+  - Diagnose timestamp association before collecting moving-robot pilot bags.

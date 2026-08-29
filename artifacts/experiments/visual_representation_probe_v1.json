@@ -1,0 +1,114 @@
+{
+  "bundle": "artifacts\\livifuser_dinov3_splus_cache_v2_bundle.zip",
+  "frames_per_episode": 40,
+  "seed": 20260824,
+  "status": "EXPLORATORY_DIAGNOSTIC_NOT_CONFIRMATORY",
+  "test_1_variance_decomposition": {
+    "train": {
+      "frame_global_fraction": 0.3525014330390945,
+      "frame_global_variance": 6.541246706576509,
+      "within_frame_spatial_variance": 12.01540609957264
+    },
+    "validation": {
+      "frame_global_fraction": 0.2634195793769506,
+      "frame_global_variance": 5.219553590631931,
+      "within_frame_spatial_variance": 14.595046383209825
+    }
+  },
+  "test_2_appearance_versus_geometry": {
+    "appearance_dominance_ratio": 3.1852996024808915,
+    "cross_archetype_same_skin": {
+      "train_cluttered_room_005|train_dogleg_corridor_001": 0.4794679858968977,
+      "train_cluttered_room_005|train_doorway_002": 0.6020728042577228,
+      "train_cluttered_room_005|train_island_room_004": 0.7766801564312992,
+      "train_cluttered_room_005|train_straight_corridor_000": 0.510027836245615,
+      "train_cluttered_room_005|train_t_junction_003": 0.5404417064641265,
+      "train_dogleg_corridor_001|train_doorway_002": 0.4503101445164176,
+      "train_dogleg_corridor_001|train_island_room_004": 0.8204077635407957,
+      "train_dogleg_corridor_001|train_straight_corridor_000": 0.5527000834690708,
+      "train_dogleg_corridor_001|train_t_junction_003": 0.49770784733626167,
+      "train_doorway_002|train_island_room_004": 0.8207055217043979,
+      "train_doorway_002|train_straight_corridor_000": 0.6002099256877652,
+      "train_doorway_002|train_t_junction_003": 0.4160695329395423,
+      "train_island_room_004|train_straight_corridor_000": 0.6752812871339952,
+      "train_island_room_004|train_t_junction_003": 0.7663970970441399,
+      "train_straight_corridor_000|train_t_junction_003": 0.5737254880658952
+    },
+    "cross_skin_same_archetype": {
+      "dogleg_corridor_001": 1.8126444994802495,
+      "straight_corridor_000": 2.04462810743198
+    },
+    "mean_cross_archetype": 0.6054803453822629,
+    "mean_cross_skin": 1.928636303456115
+  },
+  "test_3_mahalanobis_gap": {
+    "raw_pooled": {
+      "train_max": 26.837545518257055,
+      "train_median": 11.968539213847418,
+      "train_p95": 15.97020895911257,
+      "validation_fraction_above_train_max": 1.0,
+      "validation_max": 68.70546477655206,
+      "validation_median": 58.127794658304,
+      "validation_min": 41.37807479812523
+    },
+    "token_centered_patch": {
+      "train_max": 31.046955509120046,
+      "train_median": 15.518283999649245,
+      "train_p95": 19.67645892309488,
+      "validation_fraction_above_train_max": 1.0,
+      "validation_max": 66.38291771669476,
+      "validation_median": 60.29770215125359,
+      "validation_min": 53.0434901827846
+    }
+  },
+  "worlds": [
+    {
+      "episodes": 20,
+      "sampled_frames": 800,
+      "split": "train",
+      "world": "train_cluttered_room_005"
+    },
+    {
+      "episodes": 20,
+      "sampled_frames": 800,
+      "split": "train",
+      "world": "train_dogleg_corridor_001"
+    },
+    {
+      "episodes": 20,
+      "sampled_frames": 800,
+      "split": "train",
+      "world": "train_doorway_002"
+    },
+    {
+      "episodes": 20,
+      "sampled_frames": 800,
+      "split": "train",
+      "world": "train_island_room_004"
+    },
+    {
+      "episodes": 20,
+      "sampled_frames": 800,
+      "split": "train",
+      "world": "train_straight_corridor_000"
+    },
+    {
+      "episodes": 20,
+      "sampled_frames": 800,
+      "split": "train",
+      "world": "train_t_junction_003"
+    },
+    {
+      "episodes": 15,
+      "sampled_frames": 600,
+      "split": "val_id",
+      "world": "val_id_dogleg_corridor_001"
+    },
+    {
+      "episodes": 15,
+      "sampled_frames": 600,
+      "split": "val_id",
+      "world": "val_id_straight_corridor_000"
+    }
+  ]
+}

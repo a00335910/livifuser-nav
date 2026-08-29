@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FROZEN_BEFORE_FIRST_OFFICIAL_BACKBONE_MODEL_LOAD",
+  "purpose": "select_exact_pytorch_cpu_runtime_route",
+  "backbone_bundle_sha256": "0F9F7CB99A955AE0B817762CC08565F0D3BD820CDD1692D71DC6B05E2CD9E9F3",
+  "policy_payload_sha256": "3A989EADD0DB8D995993D2042124E34C2C51FAAFC1A9C74EC60106E8A182C162",
+  "software": {
+    "transformers": "4.56.0",
+    "huggingface_hub": "0.34.4",
+    "safetensors": "0.6.2",
+    "torch": "record_installed_exact_version",
+    "numpy": "record_installed_exact_version",
+    "pillow": "record_installed_exact_version"
+  },
+  "sources": [
+    {
+      "root": "artifacts/simulation/visual_skin_gate_v1/straight_c0/export",
+      "manifest_sha256": "5B1AC19207EF8E8F912DA45B4B2592003E85A4F188BAD84352C4784619FF27A4",
+      "rgb_sha256": "3688B0B5C26AD7B0386B82CE091E64A0C84060CFCDF9824E7F9B8E91AC2BC168",
+      "scan_sha256": "69DCB101849B68AE5AEC7CFF935D1D22BB62675982F5FE745FA3FB7BFBF6ABA0",
+      "vectors_sha256": "1E84D70C242489F3560C65DEAE0EF4B93DFA31EC0FC8C8C3C7F95B50A206A41E",
+      "rows": 616
+    },
+    {
+      "root": "artifacts/simulation/visual_skin_gate_v1/dogleg_c0/export",
+      "manifest_sha256": "E64DEFD6D2BEC82269C3E6FD48FE3BE0AD1A9C323061A130601521AB0DB1A8FC",
+      "rgb_sha256": "516AB5C95A9E527013B55520A988C7BB34ABA52F283F7BD6C4625FC7D0D1DCE2",
+      "scan_sha256": "E20FF7D1F9433ECFE71B956B016CFB8BA52794BE21967B9FD5C787E62D3DE017",
+      "vectors_sha256": "19352AE6C423B439E81D304A7B734A59181908B1126004983A31F5EA4AAE712C",
+      "rows": 396
+    }
+  ],
+  "common": {
+    "device": "cpu",
+    "dtype": "float32",
+    "attention": "eager",
+    "autocast": false,
+    "torch_inference_mode": true,
+    "torch_deterministic_algorithms": true,
+    "interop_threads": 1,
+    "warmup_complete_path_iterations": 12,
+    "context_k": 8,
+    "horizon_h": 8,
+    "execute_horizon_index": 0,
+    "source_order": "alternate_sources_then_ascending_row_from_7",
+    "stages": [
+      "rgb_preprocess",
+      "splus_forward_and_pool",
+      "lidar_tokenize",
+      "policy_stack_and_forward",
+      "uncertainty_and_supervisor",
+      "complete_path"
+    ]
+  },
+  "thread_screen": {
+    "variant": "full",
+    "seed": 20260805,
+    "intraop_thread_candidates": [1, 2, 4, 6],
+    "timed_iterations_per_candidate": 40,
+    "selection": "minimum_complete_path_p99; candidates_within_2_percent_choose_lower_thread_count"
+  },
+  "final_route_evidence": {
+    "variants": ["full", "lidar_only", "concat", "rgb_only"],
+    "seed": 20260805,
+    "timed_iterations_per_variant": 200,
+    "deadline_ms": 100.0,
+    "acceptance": "all_four_complete_path_p99_below_deadline_and_zero_missed_deadlines"
+  },
+  "forbidden": {
+    "heldout_inputs": true,
+    "confirmatory_inputs": true,
+    "cached_dino_features": true,
+    "mixed_precision": true,
+    "training": true,
+    "policy_parameter_changes": true
+  }
+}

@@ -1,0 +1,41 @@
+* text=auto
+.gitattributes text eol=lf
+
+# Cross-platform source files must retain Unix line endings for ROS/Linux.
+*.py text eol=lf
+*.sh text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.xml text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+# Experiment manifests record a config file's SHA-256. Without a fixed line
+# ending the checked-out config hashes differently on Windows and the recorded
+# provenance stops verifying.
+*.json text eol=lf
+*.ipynb text eol=lf
+*.cfg text eol=lf
+*.msg text eol=lf
+*.svg text eol=lf
+*.sdf text eol=lf
+*.obj text eol=lf
+*.mtl text eol=lf
+*.dae text eol=lf
+*.config text eol=lf
+LICENSE* text eol=lf
+*.lock text eol=lf
+CMakeLists.txt text eol=lf
+
+# Prevent line-ending filters from altering binary research and print assets.
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.onnx binary
+
+# Evidence is bytes, not text. Every record under artifacts/ is hashed, and
+# several of those SHA-256 values are quoted in the provenance manifest, so a
+# line-ending filter applied on checkout would store different bytes than the
+# ones that were hashed and every clone would fail verification. Nothing here
+# is normalised.
+artifacts/** -text
