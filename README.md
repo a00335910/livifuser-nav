@@ -19,12 +19,18 @@ to check that claim.
 with a TurtleBot3 Burger, this is probably the most reusable part of the
 repository. From 20 recordings and 15,295 scans:
 
-- The sensor runs at about 10.06 Hz, not the roughly 5 Hz the specification
-  assumes. There are no duplicated scans at 10 Hz sampling.
-- Beam count varies between 396 and 404 within a single run, and the driver sets
-  `angle_increment` to `2*pi/(beam_count+1)` to match. Beam index *i* therefore
-  has no fixed bearing across scans, and a precomputed bearing table silently
-  corrupts every LiDAR token. Use the per-scan increment.
+- Measured scan rate is about 10.06 Hz, which matches the 10 Hz ROBOTIS
+  documents. An earlier internal design assumption of 5 Hz was simply wrong;
+  there are no duplicated scans at 10 Hz sampling.
+- ROBOTIS gives angular resolution as 0.9 degrees, which implies 400 points per
+  revolution, and notes that resolution varies because the 4 kHz sampling rate
+  is fixed. In practice the variation happens *scan to scan within one run*:
+  beam count moves between 396 and 404, and the driver rescales
+  `angle_increment` to `2*pi/(beam_count+1)` each time. Beam index *i* therefore
+  has no fixed bearing across scans. A precomputed bearing table, which is the
+  obvious implementation, silently corrupts every LiDAR token, by up to 7.2
+  degrees at the far beam on the longest run measured. Use the per-scan
+  increment.
 - The camera sits 8.4 cm below the scan plane, so a nearer return projects
   higher in the image, not lower.
 
